@@ -134,6 +134,8 @@ img{display:block}
 .band{left:-6400px;top:680px;width:7130px;height:420px;background:var(--m);border-radius:0 110px 0 0;visibility:hidden;z-index:1}
 .fr{right:790px;top:680px;height:130px;display:flex;align-items:center;gap:26px;visibility:hidden;opacity:0;z-index:3}
 .fr b{display:block;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
+.fa svg{display:block;width:56px;height:28px;fill:none;stroke:var(--n);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.5s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(-10px)}}
 
 /* 5 · העבודות: לכל אחת מסך משלה משמאל לקודמת. הטלפון והמחשב עומדים על הפס */
 .pjh{left:0;right:0;top:100px;text-align:center;font-size:48px;line-height:1.15;font-weight:700;opacity:0;pointer-events:none}
@@ -256,7 +258,7 @@ img{display:block}
 
     <div class="hx" id="hx"><p>למה לעבוד איתי</p><h2 aria-label="מה תקבל רק אצלי."><span class="l"><span class="w">מה</span> <span class="w">תקבל</span></span><span class="l"><span class="w mk" id="hmk">רק אצלי</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M960 340H90C60 340 40 360 40 390V690" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
+     <path id="ln" d="M960 340H90C60 340 40 360 40 390V590C40 700 10 770 -70 840" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
      <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="830" cy="340" r="15"/><circle class="dot" cx="560" cy="340" r="15"/><circle class="dot" cx="290" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
@@ -265,7 +267,7 @@ img{display:block}
     <div class="stn" style="left:165px"><b><i>03</i></b><span><strong>AI שעובד בשבילך</strong>אישורים, תזכורות ומקדמות יוצאים בוואטסאפ לבד. הערב שלך נשאר שלך.</span></div>
 
     <div class="band" id="band"></div>
-    <div class="fr" id="fr"><b id="fq">ומה איתך?</b><a class="btn-n" id="fb" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>בואו נדבר על העסק שלך</a></div>
+    <div class="fr" id="fr"><b id="fq">בוא תראה איך זה עובד</b><span class="fa" id="fb" aria-hidden="true"><svg viewBox="0 0 56 28"><path d="M53 14H4M15 3L4 14l11 11"/></svg></span></div>
     <div id="pnls"></div>
 
     <div class="me" id="me" aria-hidden="true">
@@ -442,7 +444,7 @@ function render(){
  /* 4 · ומה איתך: הקו נשפך לפס טורקיז שנפתח מהנקודה שבה הוא נכנס */
  const bR=eo(seg(y,3480,3820));
  if(bR<=0)band.style.visibility='hidden';
- else{band.style.visibility='visible';band.style.clipPath=bR>=1?'none':`circle(${(bR*1500).toFixed(0)}px at 6440px 10px)`;}
+ else{band.style.visibility='visible';band.style.clipPath=bR>=1?'none':`circle(${(bR*1600).toFixed(0)}px at 6400px 130px)`;}
  const fa=eo(seg(y,3600,3800));op(fr,fa);fq.style.transform=`translateY(${((1-fa)*24).toFixed(1)}px)`;
  const b2=seg(y,3680,3860);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform=`scale(${(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)})`;fb.style.setProperty('--sh',(-60+190*seg(y,3850,3950)).toFixed(0)+'%');
 

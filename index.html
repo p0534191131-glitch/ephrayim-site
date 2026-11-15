@@ -118,14 +118,15 @@ img{display:block}
 .stx b{font-weight:700;color:var(--c);white-space:nowrap;padding-bottom:3px;background:linear-gradient(var(--m),var(--m)) no-repeat 100% 100%/calc(var(--k,0)*100%) 3px}
 
 /* 3 · איך זה עובד: על הרקע הבהיר. הכוכב והקו */
-.hx{left:100px;top:118px;width:760px;color:var(--n);visibility:hidden;opacity:0}
+.hx{left:100px;top:84px;width:840px;color:var(--n);visibility:hidden;opacity:0}
 .hx p{font-size:24px;font-weight:700;line-height:1.3}
-.hx h2{font-size:96px;line-height:1.02;font-weight:700;margin-top:8px}
+.hx h2{font-size:64px;line-height:1.02;font-weight:700;margin-top:8px}
+.hx h2 .l{display:inline-block}.hx h2 .l+.l{margin-right:.26em}
 .lnv{left:0;top:0;width:1440px;height:810px;overflow:visible;pointer-events:none}
-.stn{width:270px;text-align:center;top:500px;color:var(--n)}
+.stn{width:200px;text-align:center;top:260px;color:var(--n)}
 .stn b{display:block;font-size:48px;line-height:1;font-weight:700;overflow:hidden}
 .stn b i{display:inline-block;font-style:normal}
-.stn span{display:block;max-width:230px;margin:62px auto 0;font-weight:500;font-size:18px;line-height:1.4;color:rgba(15,30,110,.8);text-wrap:balance}
+.stn span{display:block;max-width:196px;margin:62px auto 0;font-weight:500;font-size:18px;line-height:1.4;color:rgba(15,30,110,.8);text-wrap:balance}
 .stn strong{display:block;font-weight:700;color:var(--n);margin-bottom:4px}
 
 /* 4 · הפס: מתחיל ב"ומה איתך?" וממשיך שמאלה מתחת לכל העבודות */
@@ -239,13 +240,13 @@ img{display:block}
 
     <div class="hx" id="hx"><p>ככה זה עובד</p><h2 aria-label="קו ישר מבלאגן לשקט."><span class="l"><span class="w">קו</span> <span class="w">ישר</span></span><span class="l"><span class="w">מבלאגן</span> <span class="w mk" id="hmk">לשקט</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M1160 490V535C1160 565 1145 580 1110 580H430C390 580 370 600 370 640V690" fill="none" stroke="#3DDBB0" stroke-width="21" stroke-linecap="round" opacity="0"/>
-     <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="1020" cy="580" r="15"/><circle class="dot" cx="770" cy="580" r="15"/><circle class="dot" cx="520" cy="580" r="15"/></g>
+     <path id="ln" d="M960 340H420C390 340 370 360 370 390V690" fill="none" stroke="#3DDBB0" stroke-width="21" stroke-linecap="round" opacity="0"/>
+     <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="860" cy="340" r="15"/><circle class="dot" cx="660" cy="340" r="15"/><circle class="dot" cx="460" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
-    <div class="stn" style="left:885px"><b><i>01</i></b><span><strong>אפיון</strong>אני לומד את העסק שלך, ומוצא איפה לקצר.</span></div>
-    <div class="stn" style="left:635px"><b><i>02</i></b><span><strong>בנייה</strong>אתר ומערכת AI כגוף אחד, תפורים בדיוק לעסק שלך.</span></div>
-    <div class="stn" style="left:385px"><b><i>03</i></b><span><strong>שקט</strong>המערכת מנהלת את הלו"ז, ואתה עובד בראש שקט.</span></div>
+    <div class="stn" style="left:760px"><b><i>01</i></b><span><strong>אפיון</strong>לומד את העסק שלך ומוצא איפה לקצר.</span></div>
+    <div class="stn" style="left:560px"><b><i>02</i></b><span><strong>בנייה</strong>אתר ומערכת AI כגוף אחד, תפורים לעסק שלך.</span></div>
+    <div class="stn" style="left:360px"><b><i>03</i></b><span><strong>שקט</strong>המערכת מנהלת את הלו"ז, ואתה בראש שקט.</span></div>
 
     <div class="band" id="band"></div>
     <div class="fr" id="fr"><b id="fq">ומה איתך?</b><a class="btn-n" id="fb" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>בואו נדבר על העסק שלך</a></div>
@@ -340,7 +341,7 @@ $$('.htx h1 .w').forEach((w,i)=>w.style.setProperty('--i',i));
 let rh='';for(let i=0;i<12;i++){const a=i/12*Math.PI*2-Math.PI/2,c=Math.cos(a),s=Math.sin(a),f=n=>n.toFixed(1);rh+=`<g><line x1="${f(c*252)}" y1="${f(s*252)}" x2="${f(c*460)}" y2="${f(s*460)}" pathLength="1"/><circle cx="${f(c*460)}" cy="${f(s*460)}" r="34"/></g>`;}
 $('#rays').innerHTML=rh;
 const rays=$$('#rays g').map(g=>({l:g.querySelector('line'),c:g.querySelector('circle')}));
-const RO=[5,4,3,2,1,0,11,10,9,8,7,6];rays[6].c.style.display='none';
+const RO=[5,4,3,2,1,0,11,10,6,7,8,9];rays[9].c.style.display='none';
 
 /* ===== הסיפור שלי: פסקה אחת שנדלקת מילה אחרי מילה, והמשפטים החשובים מקבלים פס ===== */
 const stx=$('#stx'),say=$('#say'),sayT=$('#say span');
@@ -357,8 +358,8 @@ const sc=$('#scene'),ft=$('#contact'),nv=$('#nv'),nvw=$('#nvw'),trk=$('#trk'),ht
 const ln=$('#ln'),run=$('#run'),dots=$$('.lnv .dot'),stns=$$('.stn'),band=$('#band'),fr=$('#fr'),fb=$('#fb'),fq=$('#fq'),pjh=$('#pjh'),pjc=$('#pjc'),pjn=$('#pjn');
 let t0=0;const intro=()=>t0?cl((performance.now()-t0)/900):0;
 const L=ln.getTotalLength();ln.style.strokeDasharray=L;
-const DX=[1020,770,520];
-const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-580)<1.5&&p.x<=x)return d/L;}return 1;});
+const DX=[860,660,460];
+const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
 const PS=3950,MV=700,ST=1050,D=PS+NP*ST+150;
 
@@ -377,7 +378,7 @@ function render(){
     אחרי לפני/אחרי העיגול נסגר סביבו, הרקע חוזר לבהיר, והוא זז ימינה ונהיה מרכז הכוכב */
  const bgd=document.getElementById('bgd'),bgc=document.getElementById('bgc'),k=intro(),R0=230*lr(.8,1,k<=0?0:backOut(k));
  const g=eo(seg(y,40,620)),c2=ss(seg(y,1960,2300)),a2=ss(seg(y,2140,2540));
- const px=lr(380,1160,a2),py=lr(430,290,a2),s=lr(1,100/230,a2);
+ const px=lr(380,1160,a2),py=lr(430,340,a2),s=lr(1,100/230,a2);
  const x0=-ox/u,y0=-oy/u,x1=(W-ox)/u,y1=(H-oy)/u,far=Math.hypot(Math.max(px-x0,x1-px),Math.max(py-y0,y1-py))+30;
  const rC=lr(lr(R0,far,g),230*s,c2),rl=rC/s;
  me.style.transform=`translate(${(px-230*s).toFixed(1)}px,${(py-230*s).toFixed(1)}px) scale(${s.toFixed(4)})`;
@@ -406,7 +407,7 @@ function render(){
  const lp=seg(y,2740,3480);ln.style.strokeDashoffset=(L*(1-lp)).toFixed(1);ln.style.opacity=lp>0?1:0;
  const pt=ln.getPointAtLength(L*lp);run.setAttribute('cx',pt.x.toFixed(1));run.setAttribute('cy',pt.y.toFixed(1));run.setAttribute('opacity',lp>0&&lp<1?1:0);
  stns.forEach((st,i)=>{const t=seg(lp,SF[i]-.015,SF[i]+.09),b=st.querySelector('i'),sp2=st.querySelector('span');
-  dots[i].style.transformOrigin=`${DX[i]}px 580px`;dots[i].style.transform=`scale(${(t<=0?0:backOut(t)).toFixed(3)})`;
+  dots[i].style.transformOrigin=`${DX[i]}px 340px`;dots[i].style.transform=`scale(${(t<=0?0:backOut(t)).toFixed(3)})`;
   b.style.transform=t<1?`translateY(${((1-eo(t))*110).toFixed(1)}%)`:'';
   const l=seg(lp,SF[i]+.03,SF[i]+.13);sp2.style.opacity=l.toFixed(3);sp2.style.transform=l<1?`translateY(${((1-eo(l))*14).toFixed(1)}px)`:'';});
 

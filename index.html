@@ -110,19 +110,18 @@ img{display:block}
 @property --mkw{syntax:'<percentage>';inherits:true;initial-value:100%}
 @property --sh{syntax:'<percentage>';inherits:true;initial-value:130%}
 
-/* 2 · לפני ואחרי, ליד התמונה, על הכחול: עשר שורות שמתווספות אחת אחרי השנייה ונשארות */
+/* 2 · הסיפור שלי, ליד התמונה, על הכחול: שלושה פרקים שמתווספים אחד אחרי השני, וקו שנמשך ביניהם */
 .sp{right:80px;top:0;width:760px;height:810px;color:var(--c);visibility:hidden;opacity:0}
-.sh{position:absolute;right:0;top:100px;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
-.thd,.rows li{display:grid;grid-template-columns:44px 336px 1fr;align-items:center}
-.thd{position:absolute;right:0;left:0;top:178px;font-weight:700;font-size:16px}
-.thd span:nth-child(2){color:var(--soft);opacity:.75}.thd span:nth-child(3){color:var(--m)}
-.rows{position:absolute;right:0;left:0;top:206px}
-.rows li{height:49px;border-top:1px solid rgba(246,241,231,.13);opacity:0;will-change:transform,opacity}
-.rows .ckc{width:28px;height:28px}
-.rows .bf{position:relative;justify-self:start;font-size:20px;color:var(--soft);white-space:nowrap}
-.rows .bf i{position:absolute;right:-4px;left:-4px;top:54%;height:3px;border-radius:2px;background:var(--m);transform:scaleX(var(--sk,0));transform-origin:right}
-.rows .af{font-size:21px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
-.sp>.btn-m{position:absolute;right:0;top:722px}
+.sl{position:absolute;right:0;top:98px;font-size:16px;font-weight:700;color:var(--m)}
+.sh{position:absolute;right:0;top:124px;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
+.sln{position:absolute;right:7px;width:2px;border-radius:2px;background:var(--m);opacity:.5;transform-origin:top;transform:scaleY(0)}
+.sty{position:absolute;right:0;left:0;top:222px;display:flex;flex-direction:column;gap:28px;list-style:none;margin:0;padding:0}
+.sty li{position:relative;padding-right:44px;opacity:0;will-change:transform,opacity}
+.sty .sdot{position:absolute;right:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--m);box-shadow:0 0 0 6px rgba(61,219,176,.18);transform:scale(0)}
+.sty .sk{font-size:16px;font-weight:700;color:var(--m);margin:0 0 6px}
+.sty .sx{font-size:20px;line-height:1.55;color:var(--soft);margin:0;max-width:690px;text-wrap:pretty}
+.sty b{font-weight:700;color:var(--c);white-space:nowrap;padding-bottom:3px;background:linear-gradient(var(--m),var(--m)) no-repeat 100% 100%/calc(var(--k,0)*100%) 3px}
+.sp>.btn-m{position:absolute;right:44px;top:722px}
 
 /* 3 · איך זה עובד: על הרקע הבהיר. הכוכב והקו */
 .hx{left:100px;top:118px;width:760px;color:var(--n);visibility:hidden;opacity:0}
@@ -210,7 +209,7 @@ img{display:block}
 <header class="hd" id="hd">
  <a class="hd-logo" href="#top" data-go="top"><img src="assets/img/logo-navy.svg" alt="אפרים קוסטנטינר" width="141" height="40"></a>
  <nav class="hd-nav" aria-label="ניווט ראשי">
-  <a href="#stop" data-go="stop">מה אתה מפסיק להגיד</a>
+  <a href="#stop" data-go="stop">הסיפור שלי</a>
   <a href="#how" data-go="how">איך זה עובד</a>
   <a href="#projects" data-go="projects">עבודות</a>
   <a href="#contact" data-go="contact">צור קשר</a>
@@ -239,10 +238,15 @@ img{display:block}
     </div>
 
     <div class="sp" id="sp">
-     <h2 class="sh">מה אתה <span class="tq">מפסיק</span> להגיד</h2>
-     <div class="thd" aria-hidden="true"><span></span><span>לפני</span><span>אחרי</span></div>
-     <ol class="rows" id="rows"></ol>
-     <a class="btn-m" href="https://wa.me/972534191131" data-wa="היי אפרים, ראיתי באתר את עשרת המשפטים. חלק מהם אני אומר כל יום, אשמח לדבר על העסק שלי"><svg aria-hidden="true"><use href="#wa"/></svg>זה אני, בוא נדבר</a>
+     <p class="sl">הסיפור שלי</p>
+     <h2 class="sh">גם אצלנו ההזמנות <span class="tq">התבלבלו</span>.</h2>
+     <i class="sln" id="sln" aria-hidden="true"></i>
+     <ol class="sty" id="sty">
+      <li><span class="sdot" aria-hidden="true"></span><p class="sk">הבלאגן</p><p class="sx">הרבה בעלי עסקים מנהלים הזמנות מהראש, מהאקסל ומהמחברת. זה מחזיק עד שמגיע עומס, ואז דף נעלם, הזמנה קופצת ליום אחר, ו<b>כל אקסל חדש רק מוסיף מקום לאבד בו</b>.</p></li>
+      <li><span class="sdot" aria-hidden="true"></span><p class="sk">בר הקינוחים</p><p class="sx">אשתי פתחה בר קינוחים, וההזמנות אצלנו התבלבלו. לא ידענו כמה אנחנו מכניסים באמת. אז <b>בניתי אתר ומערכת כגוף אחד</b>: הזמנה מהאתר נוחתת ישר במערכת, וה-AI מאשר ומזכיר בוואטסאפ.</p></li>
+      <li><span class="sdot" aria-hidden="true"></span><p class="sk">היום</p><p class="sx">פטיסייר וקריספרי כבר רצים על זה. מי שבונה אצלי רואה כל הזמנה במקום אחד, יודע כמה הוא מרוויח ויוצא לחופש בלי לחשוש. <b>הערב חוזר אליו</b>, והבלאגן עובר למתחרים.</p></li>
+     </ol>
+     <a class="btn-m" href="https://wa.me/972534191131" data-wa="היי אפרים, קראתי באתר את הסיפור שלך. גם אצלי ההזמנות מתבלבלות, אשמח לדבר על העסק שלי"><svg aria-hidden="true"><use href="#wa"/></svg>זה אני, בוא נדבר</a>
     </div>
 
     <div class="hx" id="hx"><p>ככה זה עובד</p><h2 aria-label="קו ישר מהזמנה לרווח."><span class="l"><span class="w">קו</span> <span class="w">ישר</span></span><span class="l"><span class="w">מהזמנה</span> <span class="w mk" id="hmk">לרווח</span><span class="w">.</span></span></h2></div>
@@ -349,34 +353,19 @@ let rh='';for(let i=0;i<12;i++){const a=i/12*Math.PI*2-Math.PI/2,c=Math.cos(a),s
 $('#rays').innerHTML=rh;
 const rays=$$('#rays g').map(g=>({l:g.querySelector('line'),c:g.querySelector('circle')}));
 
-/* ===== לפני ואחרי ===== */
-/* שורה חדשה = | , מילה בטורקיז = * */
-const P=[
- ['שכחתי הזמנה.','אף הזמנה|לא הולכת|*לאיבוד.'],
- ['אני עונה להודעות עד חצות.','הערב|*חוזר *אליך.'],
- ['לא זוכר מי שילם מקדמה.','אתה גובה|בלי *להתבייש.'],
- ['לא יודע כמה אני מרוויח.','אתה יודע|שהעבודה|שלך *שווה.'],
- ['לא יודע מה לקדם.','אתה מחליט|כמו *מנהל.'],
- ['אין לי חופש.','העסק עובד|גם *בלעדיך.'],
- ['אותן שאלות עשר פעמים ביום.','יש לך זמן|לעבודה|שאתה *אוהב.'],
- ['מתכנן מלאי ועבודה בניחוש.','אתה מתכנן|קדימה, ולא|*מכבה *שריפות.'],
- ['לקוחות מתבלבלים ומתלוננים.','הלקוחות|מרגישים|*שמטפלים *בהם.'],
- ['אני לא טכנולוגי, אולי יפרצו לי.','הטכנולוגיה|עובדת *בשבילך.']
-];
-const N=P.length;
-/* כל משפט הוא שורה: וי, "לפני" עם פס, ו"אחרי". השורות מתווספות אחת מתחת לשנייה ונשארות */
-const mkw=s=>s.replace(/\|/g,' ').split(' ').map(w=>{const a=w[0]==='*';if(a)w=w.slice(1);return '<span class="w">'+(a?'<em class="tq">'+w+'</em>':w)+'</span>';}).join(' ');
-$('#rows').innerHTML=P.map(p=>`<li><span class="ckc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.6l4.6 4.6L19 7.4"/></svg></span><span class="bf"><s class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">לפני: </s>${p[0]}<i></i></span><span class="af">${mkw(p[1])}</span></li>`).join('');
-const rows=$$('#rows li').map(el=>({el,bf:el.querySelector('.bf'),ck:el.querySelector('.ckc'),ws:[...el.querySelectorAll('.af .w')]}));
+/* ===== הסיפור שלי: שלושה פרקים שמתווספים אחד אחרי השני, וקו שנמשך מנקודה לנקודה ===== */
+const chs=$$('#sty li').map(el=>({el,d:el.querySelector('.sdot'),b:el.querySelector('b')})),N=chs.length,sln=$('#sln'),sty=$('#sty');
+function layoutStory(){const d0=chs[0].d,d1=chs[N-1].d,y0=sty.offsetTop+chs[0].el.offsetTop+d0.offsetTop+8,y1=sty.offsetTop+chs[N-1].el.offsetTop+d1.offsetTop+8;sln.style.top=y0+'px';sln.style.height=(y1-y0)+'px';}
+layoutStory();document.fonts&&document.fonts.ready.then(layoutStory);
 function renderStop(y){
- const q=seg(y,520,1780)*N;
- rows.forEach((o,i)=>{
-  const t=cl(q-i),a=eo(seg(t,0,.22));
-  o.el.style.opacity=a.toFixed(3);o.el.style.transform=a<1?`translateY(${((1-a)*18).toFixed(1)}px)`:'';
-  o.bf.style.setProperty('--sk',eo(seg(t,.2,.48)).toFixed(3));o.bf.style.opacity=(1-.4*seg(t,.42,.6)).toFixed(3);
-  const c=seg(t,.45,.65);o.ck.style.opacity=Math.min(1,c*2.5).toFixed(3);o.ck.style.transform=`scale(${(c<=0?0:.3+.7*backOut(c)).toFixed(3)})`;
-  const n=o.ws.length;o.ws.forEach((w,j)=>{const v=eo(seg(t,.5+j/n*.3,.72+j/n*.3));w.style.transform=v<1?`translateY(${((1-v)*115).toFixed(1)}%)`:'';});
+ const q=seg(y,520,1700)*N;
+ chs.forEach((o,i)=>{
+  const t=cl(q-i),a=eo(seg(t,0,.3));
+  o.el.style.opacity=a.toFixed(3);o.el.style.transform=a<1?'translateY('+((1-a)*22).toFixed(1)+'px)':'';
+  const d=seg(t,0,.22);o.d.style.transform='scale('+(d<=0?0:backOut(d)).toFixed(3)+')';
+  if(o.b)o.b.style.setProperty('--k',eo(seg(t,.35,.8)).toFixed(3));
  });
+ sln.style.transform='scaleY('+cl((q-.2)/(N-1)).toFixed(3)+')';
 }
 
 /* ===== האלמנטים ===== */
@@ -414,7 +403,7 @@ function render(){
  if(g>=1&&c2<=0){nv.style.clipPath='none';nvw.classList.add('flat');}
  else{nvw.classList.remove('flat');nv.style.clipPath=`circle(${(rC*u).toFixed(1)}px at ${(ox+(px+PX)*u).toFixed(1)}px ${(oy+py*u).toFixed(1)}px)`;}
 
- /* 2 · לפני ואחרי, ליד התמונה */
+ /* 2 · הסיפור שלי, ליד התמונה */
  const so=seg(y,380,560)*(1-seg(y,1880,2020));op(sp,so);sp.style.transform=`translateY(${(-seg(y,1880,2020)*40).toFixed(1)}px)`;
  if(so>0)renderStop(y);
 

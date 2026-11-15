@@ -123,11 +123,12 @@ img{display:block}
 .hx h2{font-size:64px;line-height:1.02;font-weight:700;margin-top:8px}
 .hx h2 .l{display:inline-block}.hx h2 .l+.l{margin-right:.26em}
 .lnv{left:0;top:0;width:1440px;height:810px;overflow:visible;pointer-events:none}
-.stn{width:200px;text-align:center;top:260px;color:var(--n)}
-.stn b{display:block;font-size:48px;line-height:1;font-weight:700;overflow:hidden}
+.stn{width:250px;top:260px;color:var(--n)}
+.stn b{display:block;text-align:center;font-size:48px;line-height:1;font-weight:700;overflow:hidden}
 .stn b i{display:inline-block;font-style:normal}
-.stn span{display:block;max-width:196px;margin:62px auto 0;font-weight:500;font-size:18px;line-height:1.4;color:rgba(15,30,110,.8);text-wrap:balance}
-.stn strong{display:block;font-weight:700;color:var(--n);margin-bottom:4px}
+.stn span{position:relative;display:block;min-height:196px;margin:62px 0 0;padding:20px 22px 22px;background:#FFFDF8;border-radius:22px;box-shadow:0 18px 36px -18px rgba(15,30,110,.38);font-weight:500;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8)}
+.stn span::before{content:'';position:absolute;right:calc(50% - 1.5px);top:-16px;width:3px;height:16px;background:var(--n)}
+.stn strong{display:block;font-size:24px;line-height:1.2;font-weight:700;color:var(--n);margin-bottom:8px}
 
 /* 4 · הפס: מתחיל ב"ומה איתך?" וממשיך שמאלה מתחת לכל העבודות */
 .band{left:-6400px;top:680px;width:7130px;height:420px;background:var(--m);border-radius:0 110px 0 0;visibility:hidden;z-index:1}
@@ -159,6 +160,20 @@ img{display:block}
 .ptx .btn-n{margin-top:22px}
 
 /* ===== צור קשר ===== */
+/* 6 · איך זה עובד: אחרי העבודות. קו באותו עובי, שנמשך כשמגיעים אליו, ושלוש נקודות שנדלקות */
+.hw{padding:var(--sp4) 0 calc(var(--sp4) + 20px);color:var(--n);background:var(--cbg)}
+.hwl{font-size:24px;font-weight:700;margin:0}
+.hw h2{font-size:64px;line-height:1.05;font-weight:700;margin:6px 0 0}
+.hw h2 .mk{--mkw:0%;transition:--mkw .7s .3s}.hw.in h2 .mk{--mkw:100%}
+.hws{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:64px 0 0;padding:0;list-style:none}
+.hws::before{content:'';position:absolute;right:calc(100%/6);left:calc(100%/6);top:76px;height:17.39px;border-radius:9px;background:var(--m);transform:scaleX(0);transform-origin:right;transition:transform 1.5s cubic-bezier(.6,0,.2,1) .2s}
+.hws li{position:relative;text-align:center}
+.hws b{display:block;font-size:48px;line-height:1;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.hws i{position:relative;z-index:1;display:block;width:34px;height:34px;margin:18px auto 0;border-radius:50%;background:var(--n);border:6px solid var(--c);transform:scale(0);transition:transform .5s cubic-bezier(.2,1.6,.4,1)}
+.hws p{max-width:300px;margin:24px auto 0;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.hws strong{display:block;font-size:24px;color:var(--n);margin-bottom:6px}
+.hw.in .hws::before{transform:none}.hw.in .hws b,.hw.in .hws p{opacity:1;transform:none}.hw.in .hws i{transform:none}
+.hws li:nth-child(1)>*{transition-delay:.35s}.hws li:nth-child(2)>*{transition-delay:.85s}.hws li:nth-child(3)>*{transition-delay:1.35s}
 .ft{position:relative;overflow:hidden;background:radial-gradient(1200px 820px at 16% 100%,#1A31A0 0%,var(--n) 58%,#0C1960 100%);color:var(--c);padding:var(--sp4) 0 40px}
 .ft-star{position:absolute;left:-300px;bottom:-360px;width:1150px;height:1150px;opacity:.1;pointer-events:none}
 .ft .in{position:relative;display:grid;grid-template-columns:1fr 520px;gap:80px;align-items:center}
@@ -206,8 +221,9 @@ img{display:block}
  <a class="hd-logo" href="#top" data-go="top"><img src="assets/img/logo-navy.svg" alt="אפרים קוסטנטינר" width="141" height="40"></a>
  <nav class="hd-nav" aria-label="ניווט ראשי">
   <a href="#stop" data-go="stop">הסיפור שלי</a>
-  <a href="#how" data-go="how">איך זה עובד</a>
+  <a href="#why" data-go="why">למה איתי</a>
   <a href="#projects" data-go="projects">עבודות</a>
+  <a href="#how" data-go="how">איך זה עובד</a>
   <a href="#contact" data-go="contact">צור קשר</a>
  </nav>
  <a class="hd-btn" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>דברו איתי בוואטסאפ</a>
@@ -238,15 +254,15 @@ img{display:block}
      <a class="btn-m" href="https://wa.me/972534191131" data-wa="היי אפרים, קראתי באתר את הסיפור שלך. גם אצלי ההזמנות מתבלבלות, אשמח לדבר על העסק שלי"><svg aria-hidden="true"><use href="#wa"/></svg>זה אני, בוא נדבר</a>
     </div>
 
-    <div class="hx" id="hx"><p>ככה זה עובד</p><h2 aria-label="קו ישר מבלאגן לשקט."><span class="l"><span class="w">קו</span> <span class="w">ישר</span></span><span class="l"><span class="w">מבלאגן</span> <span class="w mk" id="hmk">לשקט</span><span class="w">.</span></span></h2></div>
+    <div class="hx" id="hx"><p>למה לעבוד איתי</p><h2 aria-label="מה תקבל רק אצלי."><span class="l"><span class="w">מה</span> <span class="w">תקבל</span></span><span class="l"><span class="w mk" id="hmk">רק אצלי</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M960 340H420C390 340 370 360 370 390V690" fill="none" stroke="#3DDBB0" stroke-width="21" stroke-linecap="round" opacity="0"/>
-     <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="860" cy="340" r="15"/><circle class="dot" cx="660" cy="340" r="15"/><circle class="dot" cx="460" cy="340" r="15"/></g>
+     <path id="ln" d="M960 340H90C60 340 40 360 40 390V690" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
+     <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="830" cy="340" r="15"/><circle class="dot" cx="560" cy="340" r="15"/><circle class="dot" cx="290" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
-    <div class="stn" style="left:760px"><b><i>01</i></b><span><strong>אפיון</strong>לומד את העסק שלך ומוצא איפה לקצר.</span></div>
-    <div class="stn" style="left:560px"><b><i>02</i></b><span><strong>בנייה</strong>אתר ומערכת AI כגוף אחד, תפורים לעסק שלך.</span></div>
-    <div class="stn" style="left:360px"><b><i>03</i></b><span><strong>שקט</strong>המערכת מנהלת את הלו"ז, ואתה בראש שקט.</span></div>
+    <div class="stn" style="left:705px"><b><i>01</i></b><span><strong>הכול בגוף אחד</strong>מה שהלקוח מזמין באתר נוחת ישר אצלך במערכת. בלי שני ספקים ובלי חיבורים שנשברים.</span></div>
+    <div class="stn" style="left:435px"><b><i>02</i></b><span><strong>בעל עסק בעצמי</strong>בר הקינוחים שלנו רץ על המערכת כל יום. אני יודע מה כואב, כי אני חי את זה.</span></div>
+    <div class="stn" style="left:165px"><b><i>03</i></b><span><strong>AI שעובד בשבילך</strong>אישורים, תזכורות ומקדמות יוצאים בוואטסאפ לבד. הערב שלך נשאר שלך.</span></div>
 
     <div class="band" id="band"></div>
     <div class="fr" id="fr"><b id="fq">ומה איתך?</b><a class="btn-n" id="fb" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>בואו נדבר על העסק שלך</a></div>
@@ -264,6 +280,18 @@ img{display:block}
    <h2 class="pjh" id="pjh">עבודות שכבר <span class="mk">רצות</span></h2>
    <div class="pjc" id="pjc" aria-hidden="true"><span id="pjn">01</span> <i>/ 03</i></div>
   </div>
+ </div>
+</section>
+
+<section class="hw" id="how" aria-label="ככה זה עובד">
+ <div class="wrap">
+  <p class="hwl">ככה זה עובד</p>
+  <h2>קו ישר מבלאגן <span class="mk">לשקט</span>.</h2>
+  <ol class="hws">
+   <li><b>01</b><i aria-hidden="true"></i><p><strong>אפיון</strong>אני לומד איך העסק שלך עובד, ומוצא איפה אפשר לקצר.</p></li>
+   <li><b>02</b><i aria-hidden="true"></i><p><strong>בנייה</strong>אתר ומערכת AI כגוף אחד, תפורים בדיוק לעסק שלך.</p></li>
+   <li><b>03</b><i aria-hidden="true"></i><p><strong>שקט</strong>המערכת מנהלת את הלו"ז, ואתה עובד בראש שקט.</p></li>
+  </ol>
  </div>
 </section>
 </main>
@@ -358,7 +386,7 @@ const sc=$('#scene'),ft=$('#contact'),nv=$('#nv'),nvw=$('#nvw'),trk=$('#trk'),ht
 const ln=$('#ln'),run=$('#run'),dots=$$('.lnv .dot'),stns=$$('.stn'),band=$('#band'),fr=$('#fr'),fb=$('#fb'),fq=$('#fq'),pjh=$('#pjh'),pjc=$('#pjc'),pjn=$('#pjn');
 let t0=0;const intro=()=>t0?cl((performance.now()-t0)/900):0;
 const L=ln.getTotalLength();ln.style.strokeDasharray=L;
-const DX=[860,660,460];
+const DX=[830,560,290];
 const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
 const PS=3950,MV=700,ST=1050,D=PS+NP*ST+150;
@@ -397,13 +425,13 @@ function render(){
  say.style.transform='translateY('+(-sx*30).toFixed(1)+'px) rotate(-4deg) scale('+(sa<=0?0:backOut(sa)).toFixed(3)+')';
  sayT.style.clipPath='inset(-20% 0 -20% '+((1-eo(sw))*100).toFixed(1)+'%)';
 
- /* 3 · איך זה עובד: הקרניים גדלות מהטבעת, והכותרת עולה */
+ /* 3 · למה לעבוד איתי: הקרניים גדלות מהטבעת, והכותרת עולה */
  rays.forEach((r,i)=>{const k=RO.indexOf(i)*14,v=seg(y,2420+k,2590+k);r.l.style.strokeDashoffset=(1-eo(v)).toFixed(3);r.l.style.opacity=v>0?1:0;const d=seg(y,2550+k,2660+k);r.c.style.transform=`scale(${d<=0?0:backOut(d).toFixed(3)})`;});
  op(hx,seg(y,2480,2640));
  hw.forEach((w,i)=>{const v=eo(seg(y,2500+i*45,2690+i*45));w.style.transform=v<1?`translateY(${((1-v)*112).toFixed(1)}%)`:'';});
  hmk.style.setProperty('--mkw',(seg(y,2700,2820)*100).toFixed(1)+'%');
 
- /* הקו נמשך מהקרן התחתונה, וכל תחנה נדלקת כשהוא מגיע */
+ /* הקו נמשך מהקרן השמאלית, וכל כרטיסייה נתלית כשהוא מגיע לנקודה שלה */
  const lp=seg(y,2740,3480);ln.style.strokeDashoffset=(L*(1-lp)).toFixed(1);ln.style.opacity=lp>0?1:0;
  const pt=ln.getPointAtLength(L*lp);run.setAttribute('cx',pt.x.toFixed(1));run.setAttribute('cy',pt.y.toFixed(1));run.setAttribute('opacity',lp>0&&lp<1?1:0);
  stns.forEach((st,i)=>{const t=seg(lp,SF[i]-.015,SF[i]+.09),b=st.querySelector('i'),sp2=st.querySelector('span');
@@ -414,7 +442,7 @@ function render(){
  /* 4 · ומה איתך: הקו נשפך לפס טורקיז שנפתח מהנקודה שבה הוא נכנס */
  const bR=eo(seg(y,3480,3820));
  if(bR<=0)band.style.visibility='hidden';
- else{band.style.visibility='visible';band.style.clipPath=bR>=1?'none':`circle(${(bR*1500).toFixed(0)}px at 6770px 10px)`;}
+ else{band.style.visibility='visible';band.style.clipPath=bR>=1?'none':`circle(${(bR*1500).toFixed(0)}px at 6440px 10px)`;}
  const fa=eo(seg(y,3600,3800));op(fr,fa);fq.style.transform=`translateY(${((1-fa)*24).toFixed(1)}px)`;
  const b2=seg(y,3680,3860);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform=`scale(${(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)})`;fb.style.setProperty('--sh',(-60+190*seg(y,3850,3950)).toFixed(0)+'%');
 
@@ -436,12 +464,16 @@ function render(){
  spy(y);
 }
 
+/* ===== איך זה עובד: נדלק כשמגיעים אליו ===== */
+const hws=$('#how');
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){hws.classList.add('in');o.disconnect();}}),{threshold:.35}).observe(hws);
+
 /* ===== מידות וניווט ===== */
 function measure(){W=R.clientWidth;H=innerHeight;u=Math.min(W/1440,H/810,1.25);ox=W/2-720*u;oy=H/2-405*u;R.style.setProperty('--u',u.toFixed(4));sc.style.height=(H+D)+'px';}
-const JUMP={stop:1650,how:2740,projects:PS+MV};
-function go(k){if(k==='top')return scrollTo(0,0);if(k==='contact')return scrollTo(0,pageTop(ft));scrollTo(0,pageTop(sc)+JUMP[k]);}
+const JUMP={stop:1650,why:3300,projects:PS+MV};
+function go(k){if(k==='top')return scrollTo(0,0);if(k==='contact')return scrollTo(0,pageTop(ft));if(k==='how')return scrollTo(0,pageTop(hws)-60);scrollTo(0,pageTop(sc)+JUMP[k]);}
 $$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.go);}));
-function spy(y){const k=scrollY+H*.45>=pageTop(ft)?'contact':y<450?'':y<2200?'stop':y<PS+300?'how':'projects';$$('.hd-nav a').forEach(a=>a.classList.toggle('on',a.dataset.go===k));}
+function spy(y){const k=scrollY+H*.45>=pageTop(ft)?'contact':scrollY+H*.45>=pageTop(hws)?'how':y<450?'':y<2200?'stop':y<PS+300?'why':'projects';$$('.hd-nav a').forEach(a=>a.classList.toggle('on',a.dataset.go===k));}
 let raf=0;function req(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;render();});}
 addEventListener('scroll',req,{passive:true});addEventListener('resize',()=>{measure();req();});
 

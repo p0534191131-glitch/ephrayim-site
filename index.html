@@ -325,8 +325,8 @@ const PJ=[
 ];
 const NP=PJ.length;
 $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}px" aria-label="${j.name}">
- <div class="mon"><div class="scr"><img src="${j.mon}" alt="${j.monL.split('· ')[1]} של ${j.name}" loading="lazy"></div><img class="frm" src="assets/img/monitor.webp" alt=""></div>
- <div class="phn"><div><img src="${j.ph}" alt="${j.phL.split('· ')[1]} של ${j.name} בטלפון" loading="lazy"></div></div>
+ <div class="mon"><div class="scr"><img src="${j.mon}" alt="${j.monL.split('· ')[1]} של ${j.name}"></div><img class="frm" src="assets/img/monitor.webp" alt=""></div>
+ <div class="phn"><div><img src="${j.ph}" alt="${j.phL.split('· ')[1]} של ${j.name} בטלפון"></div></div>
  <span class="pill lb" style="left:292px;translate:-50% 0">${j.phL}</span>
  <span class="pill lb" style="left:1070px;translate:-50% 0">${j.monL}</span>
  <div class="ptx">

@@ -142,7 +142,8 @@ img{display:block}
 .pjh .mk{--mkw:var(--pm,0%)}
 .pjc{left:0;right:0;top:162px;text-align:center;font-weight:700;opacity:0;direction:ltr;pointer-events:none}
 .pjc i{font-style:normal;opacity:.45}
-.pnl{top:0;width:1440px;height:810px;z-index:2}
+.pnl{top:0;width:1440px;height:810px}
+.pnl .mon,.pnl .phn{z-index:2}
 .pnl>*{position:absolute}
 .pnl .mon{left:800px;top:258px;width:540px;aspect-ratio:1400/1120;filter:drop-shadow(0 26px 30px rgba(15,30,110,.3))}
 .mon .scr{position:absolute;left:4.357%;top:5%;width:91.43%;height:58.57%;overflow:hidden;background:var(--n)}
@@ -152,11 +153,11 @@ img{display:block}
 .phn div{width:100%;height:100%;border-radius:31px;overflow:hidden;background:#EEE7DB}
 .phn img{width:100%;height:auto;will-change:transform}
 .lb{top:704px;background:var(--n);color:var(--c);box-shadow:0 10px 22px -10px rgba(15,30,110,.6);z-index:3}
-.ptx{left:470px;top:236px;width:300px}
+.ptx{left:470px;top:236px;width:300px;z-index:4}
 .ptx .num{font-size:96px;line-height:1;font-weight:700;overflow:hidden}
 .ptx .num i{display:inline-block;font-style:normal}
 .ptx .num{visibility:hidden}
-.pjnum{left:470px;top:236px;width:300px;height:1.04em;overflow:hidden;font-size:96px;line-height:1;font-weight:700;text-align:right;pointer-events:none}
+.pjnum{z-index:5;left:470px;top:236px;width:300px;height:1.04em;overflow:hidden;font-size:96px;line-height:1;font-weight:700;text-align:right;pointer-events:none}
 .pjnum i{display:block;font-style:normal;will-change:transform}
 .pjnum span{display:block;height:1.04em}
 .ptx h3{font-size:48px;line-height:1.15;margin-top:6px;overflow:hidden;padding-bottom:.1em}
@@ -241,7 +242,6 @@ img{display:block}
   <div class="nvw" id="nvw"><div class="nv" id="nv"></div></div>
 
   <div class="cv" id="cv">
-   <div class="pjnum" aria-hidden="true"><i id="pjnI"><span>01</span><span>02</span><span>03</span></i></div>
    <div class="trk" id="trk">
     <div class="deco" id="deco" aria-hidden="true">
     </div>
@@ -284,6 +284,7 @@ img{display:block}
     <div class="say" id="say" aria-hidden="true"><span>נעים מאוד!</span></div>
    </div>
 
+   <div class="pjnum" aria-hidden="true"><i id="pjnI"><span>01</span><span>02</span><span>03</span></i></div>
    <h2 class="pjh" id="pjh">עבודות שכבר <span class="mk">רצות</span></h2>
    <div class="pjc" id="pjc" aria-hidden="true"><span id="pjn">01</span> <i>/ 03</i></div>
   </div>
@@ -363,7 +364,7 @@ $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}p
   <a class="btn-n" href="https://wa.me/972534191131" data-wa="היי אפרים, ראיתי באתר את העבודה של ${j.name}. רוצה כזה לעסק שלי">רוצה כזה לעסק שלך? ←</a>
  </div>
 </div>`).join('');
-const pnls=$$('.pnl').map((el,k)=>({el,j:PJ[k],phn:el.querySelector('.phn'),phi:el.querySelector('.phn img'),mon:el.querySelector('.mon'),lb:[...el.querySelectorAll('.lb')],num:el.querySelector('.num i'),lt:[...el.querySelectorAll('h3 span')],sb:el.querySelector('.sb'),p:el.querySelector('.ptx p'),bt:el.querySelector('.ptx .btn-n')}));
+const pnls=$$('.pnl').map((el,k)=>({el,j:PJ[k],phn:el.querySelector('.phn'),phi:el.querySelector('.phn img'),mon:el.querySelector('.mon'),lb:[...el.querySelectorAll('.lb')],num:el.querySelector('.num i'),lt:[...el.querySelectorAll('h3 span')],sb:el.querySelector('.sb'),p:el.querySelector('.ptx p'),bt:el.querySelector('.ptx .btn-n'),tx:el.querySelector('.ptx')}));
 
 /* וואטסאפ, שנה, כוכב */
 const WA='972534191131',wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
@@ -461,10 +462,13 @@ function render(){
   o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*110).toFixed(1)}px)`;
   o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*110).toFixed(1)}px)`;
   o.lb.forEach((l,i)=>{const t=seg(a,.7+i*.08,.86+i*.08);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
-  rise(o.num,seg(a,.3,.6));
-  const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(a,.38+j/n*.22,.62+j/n*.22));c.style.transform=v<1?`translateY(${((1-v)*120).toFixed(1)}%)`:'';});
-  [[o.sb,.55],[o.p,.63]].forEach(([el,b])=>{const v=eo(seg(a,b,b+.22));el.style.opacity=v.toFixed(3);el.style.transform=v<1?`translateY(${((1-v)*16).toFixed(1)}px)`:'';});
-  const bt=seg(a,.78,.96);o.bt.style.opacity=Math.min(1,bt*2).toFixed(3);o.bt.style.transform=bt<1?`scale(${(.7+.3*backOut(bt)).toFixed(3)})`:'';o.bt.style.setProperty('--sh',(-60+190*seg(a,.92,1)).toFixed(0)+'%');
+  /* המלל נשאר באמצע (המסילה זזה והוא לא): יוצא למעלה כשהעבודה הבאה מגיעה, ונכנס מלמטה כמו מסך חדש */
+  o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px)';
+  const ti=seg(y,PS+k*ST+MV*.72,PS+k*ST+MV+220),to=k<NP-1?seg(y,PS+(k+1)*ST,PS+(k+1)*ST+MV*.4):0,xo=eo(seg(to,0,.6));
+  const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(ti,j/n*.35,.45+j/n*.35)),x=eo(seg(to,j/n*.3,.5+j/n*.3));c.style.transform=(v<1||x>0)?'translateY('+(((1-v)-x)*120).toFixed(1)+'%)':'';});
+  [[o.sb,.3],[o.p,.42]].forEach(([el,b])=>{const v=eo(seg(ti,b,b+.3));el.style.opacity=(v*(1-xo)).toFixed(3);el.style.transform=(v<1||xo>0)?'translateY('+((1-v)*18-xo*18).toFixed(1)+'px)':'';});
+  const bt=seg(ti,.58,.9);o.bt.style.opacity=(Math.min(1,bt*2)*(1-xo)).toFixed(3);o.bt.style.transform=bt<1?'scale('+(.7+.3*backOut(bt)).toFixed(3)+')':'';o.bt.style.setProperty('--sh',(-60+190*seg(ti,.85,1)).toFixed(0)+'%');
+  o.tx.style.pointerEvents=bt>.5&&xo<.5?'':'none';
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
   if(o.j.use){const box=o.phi.parentElement,mx=Math.max(0,box.clientWidth/390*o.j.use-box.clientHeight),gg=ss(seg(y,PS+k*ST+MV-60,PS+(k+1)*ST+(k===NP-1?150:0)));o.phi.style.transform=`translateY(${(-gg*mx).toFixed(1)}px)`;}
  });

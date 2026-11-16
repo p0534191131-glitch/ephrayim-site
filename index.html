@@ -131,8 +131,8 @@ img{display:block}
 .stn strong{display:block;font-size:24px;line-height:1.2;font-weight:700;color:var(--n);margin-bottom:8px}
 
 /* 4 · הפס: מתחיל ב"ומה איתך?" וממשיך שמאלה מתחת לכל העבודות */
-.band{left:-6400px;top:680px;width:7130px;height:420px;background:var(--m);border-radius:0 110px 0 0;visibility:hidden;z-index:1}
-.fr{right:790px;top:680px;height:130px;display:flex;align-items:center;gap:26px;visibility:hidden;opacity:0;z-index:3}
+.band{left:-6400px;top:680px;width:6400px;height:420px;background:var(--m);border-radius:0 110px 0 0;z-index:1}
+.fr{left:-1440px;width:1440px;top:680px;height:130px;display:flex;align-items:center;justify-content:center;gap:26px;visibility:hidden;opacity:0;z-index:3}
 .fr b{display:block;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
 .fa svg{display:block;width:56px;height:28px;fill:none;stroke:var(--n);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.5s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateX(-10px)}}
@@ -154,7 +154,7 @@ img{display:block}
 /* המכשירים נשארים במקום, והעבודות נגללות בתוכם אחת אחרי השנייה */
 .phn .pstrip{height:auto;border-radius:0;overflow:visible;background:none;will-change:transform}
 .phn .ps{height:auto;border-radius:0;background:none}
-.mstrip{height:100%;will-change:transform}.ms{height:100%;overflow:hidden}
+.mstrip{height:100%;will-change:transform}.ms{height:100%;overflow:hidden}.ms img{will-change:transform}
 .pnl+.pnl .mon,.pnl+.pnl .phn,.pnl+.pnl .lb{display:none}
 .phn img{width:100%;height:auto;will-change:transform}
 .lb{top:704px;background:var(--n);color:var(--c);box-shadow:0 10px 22px -10px rgba(15,30,110,.6);z-index:3}
@@ -301,7 +301,7 @@ img{display:block}
 
     <div class="hx" id="hx"><p>למה לעבוד איתי</p><h2 aria-label="מה תקבל רק אצלי."><span class="l"><span class="w">מה</span> <span class="w">תקבל</span></span><span class="l"><span class="w mk" id="hmk">רק אצלי</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M960 340H90C60 340 40 360 40 390V590C40 700 10 770 -70 840" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
+     <path id="ln" d="M960 340H90C60 340 40 360 40 390V600C40 660 20 688.7 -40 688.7H-170" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
      <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="830" cy="340" r="15"/><circle class="dot" cx="560" cy="340" r="15"/><circle class="dot" cx="290" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
@@ -413,9 +413,35 @@ $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}p
  </div>
 </div>`).join('');
 const pnls=$$('.pnl').map((el,k)=>({el,j:PJ[k],phn:el.querySelector('.phn'),phi:el.querySelector('.phn img'),mon:el.querySelector('.mon'),lb:[...el.querySelectorAll('.lb')],num:el.querySelector('.num i'),lt:[...el.querySelectorAll('h3 span')],sb:el.querySelector('.sb'),p:el.querySelector('.ptx p'),bt:el.querySelector('.ptx .btn-n'),tx:el.querySelector('.ptx')}));
-const pstrip=$('.pstrip'),mstrip=$('.mstrip'),PL=pnls[0].lb;let PMX=[],PBH=0,lbK=0;
-function layPhone(){const box=pstrip.parentElement,bw=box.clientWidth;PBH=box.clientHeight;PMX=PJ.map(j=>Math.max(0,bw/390*(j.use||0)-PBH));$$('.ps').forEach((d,k)=>d.style.height=(PBH+PMX[k])+'px');}
-layPhone();
+const pstrip=$('.pstrip'),mstrip=$('.mstrip'),PL=pnls[0].lb,psImgs=$$('.ps img'),msImgs=$$('.ms img');let PMX=[],PT=[],PBH=0,lbK=0;
+function layPhone(){const box=pstrip.parentElement,bw=box.clientWidth;PBH=box.clientHeight;let acc=0;PT=[];
+ PMX=psImgs.map((im,k)=>{const full=im.naturalWidth?bw*im.naturalHeight/im.naturalWidth:PBH,dh=PJ[k].use?Math.min(full,bw/390*PJ[k].use):full,short=full<PBH;im.style.height=short?'100%':'';im.style.objectFit=short?'cover':'';im.style.objectPosition='top';const mx=Math.max(0,dh-PBH);PT.push(acc);acc+=PBH+mx;im.parentElement.style.height=(PBH+mx)+'px';return mx;});}
+layPhone();psImgs.forEach(im=>im.addEventListener('load',layPhone));
+
+/* ===== במסכים רץ סרטון לבד: הטלפון עובר על כל האתר, והמצלמה במחשב מסתובבת במערכת. גלילה מעבירה לעבודה הבאה ===== */
+const KB=[[1,50,50],[1.6,88,16],[1.6,36,40],[1.45,62,88],[1,50,50]];
+let pDisp=0,pClock=0,pSet=-1,pLw=[0,0,0],lastT=performance.now(),kbCur=msImgs.map(()=>[1,50,50]);
+function wave(t,mx){if(mx<4)return 0;const d=Math.max(3,mx/110),q=[1,d,1.4,1.6],T=q[0]+q[1]+q[2]+q[3];t%=T;if(t<q[0])return 0;t-=q[0];if(t<d)return ss(t/d);t-=d;if(t<q[2])return 1;t-=q[2];return 1-ss(t/q[3]);}
+function kb(t){const s=2.6,n=KB.length-1;t%=s*n;const i=Math.floor(t/s),f=ss((t-i*s)/s),a=KB[i],b=KB[i+1];return a.map((v,j)=>v+(b[j]-v)*f);}
+function tick(now){
+ const dt=Math.min(.05,(now-lastT)/1000);lastT=now;
+ const y=cl(scrollY-pageTop(sc),0,D);
+ if(y>PS-100){
+  let tk=0,jT=-1,tj=0;for(let k=1;k<NP;k++){const t=ss(seg(seg(y,PS2+k*ST,PS2+k*ST+MV),.29,.71));tk+=t;if(t>0&&t<1){jT=k;tj=t;}}
+  const s=Math.round(tk);let target;
+  if(jT<0){if(s!==pSet){pSet=s;pClock=0;}else pClock+=dt;const w=wave(pClock,PMX[s]);pLw[s]=w;target=PT[s]+PMX[s]*w;}
+  else{pSet=-1;target=(PT[jT-1]+PMX[jT-1]*pLw[jT-1])*(1-tj)+PT[jT]*tj;}
+  pDisp+=(target-pDisp)*Math.min(1,dt*9);
+  pstrip.style.transform='translateY('+(-pDisp).toFixed(1)+'px)';
+  mstrip.style.transform='translateY('+(-tk*100).toFixed(2)+'%)';
+  msImgs.forEach((im,k)=>{const tg=k===s&&jT<0?kb(pClock):[1,50,50],c=kbCur[k];for(let j=0;j<3;j++)c[j]+=(tg[j]-c[j])*Math.min(1,dt*5);
+   im.style.transformOrigin=c[1].toFixed(1)+'% '+c[2].toFixed(1)+'%';im.style.transform=Math.abs(c[0]-1)<.002?'':'scale('+c[0].toFixed(3)+')';});
+  if(s!==lbK){lbK=s;PL[0].textContent=PJ[s].phL;PL[1].textContent=PJ[s].monL;}
+  pjn.textContent=String(s+1).padStart(2,'0');
+ }
+ requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
 
 /* וואטסאפ, שנה, כוכב */
 const WA='972534191131',wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
@@ -448,7 +474,7 @@ const L=ln.getTotalLength();ln.style.strokeDasharray=L;
 const DX=[830,560,290];
 const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
-const PS=3950,MV=700,ST=1400,D=PS+NP*ST+150;
+const PS=3950,PS2=PS+800,MV=700,ST=1250,D=PS2+NP*ST+150;
 
 function render(){
  const y=cl(scrollY-pageTop(sc),0,D);
@@ -498,24 +524,22 @@ function render(){
   b.style.transform=t<1?`translateY(${((1-eo(t))*110).toFixed(1)}%)`:'';
   const l=seg(lp,SF[i]+.03,SF[i]+.13);sp2.style.opacity=l.toFixed(3);sp2.style.transform=l<1?`translateY(${((1-eo(l))*14).toFixed(1)}px)`:'';});
 
- /* 4 · ומה איתך: הקו נשפך לפס טורקיז שנפתח מהנקודה שבה הוא נכנס */
- const bR=eo(seg(y,3480,3820));
- if(bR<=0)band.style.visibility='hidden';
- else{band.style.visibility='visible';band.style.clipPath=bR>=1?'none':`circle(${(bR*1600).toFixed(0)}px at 6400px 130px)`;}
- const fa=eo(seg(y,3600,3800));op(fr,fa);fq.style.transform=`translateY(${((1-fa)*24).toFixed(1)}px)`;
- const b2=seg(y,3680,3860);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform=`scale(${(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)})`;fb.style.setProperty('--sh',(-60+190*seg(y,3850,3950)).toFixed(0)+'%');
+ /* 4 · "בוא תראה איך זה עובד" נכתב על הפס במסך של העבודות, ונעלם כשהטלפון והמחשב מגיעים */
+ const fw=seg(y,PS+MV-40,PS+MV+200),fo=eo(seg(y,PS2+460,PS2+600));op(fr,fw>0?1-fo:0);
+ fq.style.clipPath=fw<1?'inset(-20% 0 -20% '+((1-eo(fw))*100).toFixed(1)+'%)':'';fq.style.transform=fo>0?'translateY('+(-fo*20).toFixed(1)+'px)':'';
+ const b2=seg(y,PS+MV+160,PS+MV+320);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform='scale('+(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)+')';
 
  /* 5 · העבודות: כל אחת נכנסת משמאל, הטלפון והמחשב עולים קצת ונעמדים על הפס */
- const ph=eo(seg(y,PS+MV-220,PS+MV+40));pjh.style.opacity=ph.toFixed(3);pjh.style.transform=`translateY(${((1-ph)*24).toFixed(1)}px)`;pjh.style.setProperty('--pm',(seg(y,PS+MV-100,PS+MV+80)*100).toFixed(1)+'%');
- pjc.style.opacity=(ph*.75).toFixed(3);pjn.textContent=String(Math.min(NP,Math.max(1,Math.round(PX/1440)))).padStart(2,'0');
+ const ph=eo(seg(y,PS2+MV-220,PS2+MV+40));pjh.style.opacity=ph.toFixed(3);pjh.style.transform=`translateY(${((1-ph)*24).toFixed(1)}px)`;pjh.style.setProperty('--pm',(seg(y,PS2+MV-100,PS2+MV+80)*100).toFixed(1)+'%');
+ pjc.style.opacity=(ph*.75).toFixed(3);
  pnls.forEach((o,k)=>{
-  const a=seg(y,PS+k*ST+120,PS+k*ST+MV+40);
-  o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*110).toFixed(1)}px)`;
-  o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*110).toFixed(1)}px)`;
+  const a=seg(y,PS2+k*ST+120,PS2+k*ST+MV+40);
+  o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*720).toFixed(1)}px)`;
+  o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*720).toFixed(1)}px)`;
   o.lb.forEach((l,i)=>{const t=seg(a,.7+i*.08,.86+i*.08);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
   /* המלל נשאר באמצע (המסילה זזה והוא לא): יוצא למעלה כשהעבודה הבאה מגיעה, ונכנס מלמטה כמו מסך חדש */
   o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px)';
-  const b0=PS+k*ST,ti=seg(y,b0+(k?560:650),b0+(k?900:980)),to=k<NP-1?seg(y,PS+(k+1)*ST,PS+(k+1)*ST+190):0;
+  const b0=PS2+k*ST,ti=seg(y,b0+(k?560:650),b0+(k?900:980)),to=k<NP-1?seg(y,PS2+(k+1)*ST,PS2+(k+1)*ST+190):0;
   const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(ti,j/n*.3,.4+j/n*.3)),x=eo(seg(to,j/n*.25,.55+j/n*.25));c.style.transform=(v<1||x>0)?'translateY('+(((1-v)-x)*120).toFixed(1)+'%)':'';});
   /* תת-הכותרת, הפסקה והכפתור עולים מתוך חריץ, ויוצאים למעלה באותה דרך */
   [[o.sb,.28],[o.p,.4],[o.bt,.55]].forEach(([el,b],i)=>{const v=eo(seg(ti,b,b+.35)),x=eo(seg(to,.1+i*.12,.6+i*.12)),P=((1-v)*100).toFixed(1),Q=(x*100).toFixed(1);
@@ -525,13 +549,8 @@ function render(){
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
  });
  /* המספר באמצע: עולה עם העבודה הראשונה, ומתגלגל בעדינות ל-02 ול-03 בזמן שהעבודות מתחלפות */
- const ka=eo(seg(y,PS+640,PS+820));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.7));
+ const ka=eo(seg(y,PS2+640,PS2+820));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS2+k*ST,PS2+k*ST+MV),.29,.7));
  pjnI.style.transform='translateY('+((1-ka)*1.1-kc*1.04).toFixed(3)+'em)';
- /* בתוך המסכים: גוללים את העבודה, ובמעבר העבודה הבאה עולה מלמטה, בטלפון ובמחשב יחד */
- let po=0,tk=0;for(let k=0;k<NP;k++){po+=PMX[k]*ss(seg(y,PS+k*ST+(k?930:1010),k<NP-1?PS+(k+1)*ST:PS+NP*ST+150));if(k>0){const t=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.71));po+=PBH*t;tk+=t;}}
- pstrip.style.transform='translateY('+(-po).toFixed(1)+'px)';mstrip.style.transform='translateY('+(-tk*100).toFixed(2)+'%)';
- const kk=Math.round(tk);if(kk!==lbK){lbK=kk;PL[0].textContent=PJ[kk].phL;PL[1].textContent=PJ[kk].monL;}
- pjn.textContent=String(kk+1).padStart(2,'0');
  spy(y);
 }
 
@@ -589,7 +608,7 @@ addEventListener('load',buildFlow);document.fonts&&document.fonts.ready.then(()=
 
 /* ===== מידות וניווט ===== */
 function measure(){W=R.clientWidth;H=innerHeight;u=Math.min(W/1440,H/810,1.25);ox=W/2-720*u;oy=H/2-405*u;R.style.setProperty('--u',u.toFixed(4));sc.style.height=(H+D)+'px';}
-const JUMP={stop:1650,why:3300,projects:PS+MV};
+const JUMP={stop:1650,why:3300,projects:PS2+MV};
 function go(k){if(k==='top')return scrollTo(0,0);if(k==='contact')return scrollTo(0,pageTop(ft));if(k==='how')return scrollTo(0,pageTop(hws)-60);scrollTo(0,pageTop(sc)+JUMP[k]);}
 $$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.go);}));
 function spy(y){const k=scrollY+H*.45>=pageTop(ft)?'contact':scrollY+H*.45>=pageTop(hws)?'how':y<450?'':y<2200?'stop':y<PS+300?'why':'projects';$$('.hd-nav a').forEach(a=>a.classList.toggle('on',a.dataset.go===k));}

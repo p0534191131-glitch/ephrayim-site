@@ -525,7 +525,7 @@ function render(){
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
  });
  /* המספר באמצע: עולה עם העבודה הראשונה, ומתגלגל בעדינות ל-02 ול-03 בזמן שהעבודות מתחלפות */
- const ka=eo(seg(seg(y,PS+120,PS+MV+40),.3,.6));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.7));
+ const ka=eo(seg(y,PS+640,PS+820));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.7));
  pjnI.style.transform='translateY('+((1-ka)*1.1-kc*1.04).toFixed(3)+'em)';
  /* בתוך המסכים: גוללים את העבודה, ובמעבר העבודה הבאה עולה מלמטה, בטלפון ובמחשב יחד */
  let po=0,tk=0;for(let k=0;k<NP;k++){po+=PMX[k]*ss(seg(y,PS+k*ST+(k?930:1010),k<NP-1?PS+(k+1)*ST:PS+NP*ST+150));if(k>0){const t=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.71));po+=PBH*t;tk+=t;}}

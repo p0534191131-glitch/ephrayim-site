@@ -151,6 +151,11 @@ img{display:block}
 .mon .frm{position:absolute;inset:0;width:100%;height:100%}
 .pnl .phn{left:170px;top:176px;width:244px;height:516px;border-radius:40px;background:#070B2A;padding:10px;box-shadow:0 30px 50px -20px rgba(15,30,110,.55)}
 .phn div{width:100%;height:100%;border-radius:31px;overflow:hidden;background:#EEE7DB}
+/* המכשירים נשארים במקום, והעבודות נגללות בתוכם אחת אחרי השנייה */
+.phn .pstrip{height:auto;border-radius:0;overflow:visible;background:none;will-change:transform}
+.phn .ps{height:auto;border-radius:0;background:none}
+.mstrip{height:100%;will-change:transform}.ms{height:100%;overflow:hidden}
+.pnl+.pnl .mon,.pnl+.pnl .phn,.pnl+.pnl .lb{display:none}
 .phn img{width:100%;height:auto;will-change:transform}
 .lb{top:704px;background:var(--n);color:var(--c);box-shadow:0 10px 22px -10px rgba(15,30,110,.6);z-index:3}
 .ptx{left:470px;top:236px;width:300px;z-index:4}
@@ -395,8 +400,8 @@ const PJ=[
 ];
 const NP=PJ.length;
 $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}px" aria-label="${j.name}">
- <div class="mon"><div class="scr"><img src="${j.mon}" alt="${j.monL.split('· ')[1]} של ${j.name}"></div><img class="frm" src="assets/img/monitor.webp" alt=""></div>
- <div class="phn"><div><img src="${j.ph}" alt="${j.phL.split('· ')[1]} של ${j.name} בטלפון"></div></div>
+ <div class="mon"><div class="scr">${k===0?'<div class="mstrip">'+PJ.map(q=>'<div class="ms"><img src="'+q.mon+'" alt="'+q.monL.split('· ')[1]+' של '+q.name+'"></div>').join('')+'</div>':''}</div><img class="frm" src="assets/img/monitor.webp" alt=""></div>
+ <div class="phn"><div>${k===0?'<div class="pstrip">'+PJ.map(q=>'<div class="ps"><img src="'+q.ph+'" alt="'+q.phL.split('· ')[1]+' של '+q.name+' בטלפון"></div>').join('')+'</div>':''}</div></div>
  <span class="pill lb" style="left:292px;translate:-50% 0">${j.phL}</span>
  <span class="pill lb" style="left:1070px;translate:-50% 0">${j.monL}</span>
  <div class="ptx">
@@ -408,6 +413,9 @@ $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}p
  </div>
 </div>`).join('');
 const pnls=$$('.pnl').map((el,k)=>({el,j:PJ[k],phn:el.querySelector('.phn'),phi:el.querySelector('.phn img'),mon:el.querySelector('.mon'),lb:[...el.querySelectorAll('.lb')],num:el.querySelector('.num i'),lt:[...el.querySelectorAll('h3 span')],sb:el.querySelector('.sb'),p:el.querySelector('.ptx p'),bt:el.querySelector('.ptx .btn-n'),tx:el.querySelector('.ptx')}));
+const pstrip=$('.pstrip'),mstrip=$('.mstrip'),PL=pnls[0].lb;let PMX=[],PBH=0,lbK=0;
+function layPhone(){const box=pstrip.parentElement,bw=box.clientWidth;PBH=box.clientHeight;PMX=PJ.map(j=>Math.max(0,bw/390*(j.use||0)-PBH));$$('.ps').forEach((d,k)=>d.style.height=(PBH+PMX[k])+'px');}
+layPhone();
 
 /* וואטסאפ, שנה, כוכב */
 const WA='972534191131',wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
@@ -446,7 +454,7 @@ function render(){
  const y=cl(scrollY-pageTop(sc),0,D);
 
  /* המסילה: אחרי "ומה איתך?" הכול זז ימינה, והעבודות נכנסות משמאל, אחת אחרי השנייה */
- let PX=0;for(let k=0;k<NP;k++)PX+=1440*ss(seg(y,PS+k*ST,PS+k*ST+MV));
+ let PX=1440*ss(seg(y,PS,PS+MV));
  trk.style.transform=PX?`translateX(${PX.toFixed(1)}px)`:'';
 
  /* 1 · הטקסט של הפתיחה יוצא ימינה, הקישוטים נעלמים */
@@ -513,11 +521,15 @@ function render(){
   const bt=seg(ti,.58,.9);o.bt.style.opacity=(Math.min(1,bt*2)*(1-xo)).toFixed(3);o.bt.style.transform=bt<1?'scale('+(.7+.3*backOut(bt)).toFixed(3)+')':'';o.bt.style.setProperty('--sh',(-60+190*seg(ti,.85,1)).toFixed(0)+'%');
   o.tx.style.pointerEvents=bt>.5&&xo<.5?'':'none';
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
-  if(o.j.use){const box=o.phi.parentElement,mx=Math.max(0,box.clientWidth/390*o.j.use-box.clientHeight),gg=ss(seg(y,PS+k*ST+MV-60,PS+(k+1)*ST+(k===NP-1?150:0)));o.phi.style.transform=`translateY(${(-gg*mx).toFixed(1)}px)`;}
  });
  /* המספר באמצע: עולה עם העבודה הראשונה, ומתגלגל בעדינות ל-02 ול-03 בזמן שהעבודות מתחלפות */
  const ka=eo(seg(seg(y,PS+120,PS+MV+40),.3,.6));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.35,.75));
  pjnI.style.transform='translateY('+((1-ka)*1.1-kc*1.04).toFixed(3)+'em)';
+ /* בתוך המסכים: גוללים את העבודה, ובמעבר העבודה הבאה עולה מלמטה, בטלפון ובמחשב יחד */
+ let po=0,tk=0;for(let k=0;k<NP;k++){po+=PMX[k]*ss(seg(y,PS+k*ST+MV,k<NP-1?PS+(k+1)*ST:PS+NP*ST+150));if(k>0){const t=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.2,.8));po+=PBH*t;tk+=t;}}
+ pstrip.style.transform='translateY('+(-po).toFixed(1)+'px)';mstrip.style.transform='translateY('+(-tk*100).toFixed(2)+'%)';
+ const kk=Math.round(tk);if(kk!==lbK){lbK=kk;PL[0].textContent=PJ[kk].phL;PL[1].textContent=PJ[kk].monL;}
+ pjn.textContent=String(kk+1).padStart(2,'0');
  spy(y);
 }
 

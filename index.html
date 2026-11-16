@@ -131,7 +131,7 @@ img{display:block}
 .stn strong{display:block;font-size:24px;line-height:1.2;font-weight:700;color:var(--n);margin-bottom:8px}
 
 /* 4 · הפס: מתחיל ב"ומה איתך?" וממשיך שמאלה מתחת לכל העבודות */
-.band{left:-6400px;top:680px;width:6400px;height:420px;background:var(--m);border-radius:0 110px 0 0;z-index:1}
+.band{left:-6400px;top:600px;width:6448.7px;height:500px;overflow:visible;z-index:1}
 .fr{left:-1440px;width:1440px;top:680px;height:130px;display:flex;align-items:center;justify-content:center;gap:26px;visibility:hidden;opacity:0;z-index:3}
 .fr b{display:block;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
 .fa svg{display:block;width:56px;height:28px;fill:none;stroke:var(--n);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.5s ease-in-out infinite}
@@ -301,7 +301,7 @@ img{display:block}
 
     <div class="hx" id="hx"><p>למה לעבוד איתי</p><h2 aria-label="מה תקבל רק אצלי."><span class="l"><span class="w">מה</span> <span class="w">תקבל</span></span><span class="l"><span class="w mk" id="hmk">רק אצלי</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M960 340H90C60 340 40 360 40 390V600C40 660 20 688.7 -40 688.7H-170" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
+     <path id="ln" d="M960 340H90C60 340 40 360 40 390V700" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
      <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="830" cy="340" r="15"/><circle class="dot" cx="560" cy="340" r="15"/><circle class="dot" cx="290" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
@@ -309,7 +309,7 @@ img{display:block}
     <div class="stn" style="left:435px"><b><i>02</i></b><span><strong>בעל עסק בעצמי</strong>בר הקינוחים שלנו רץ על המערכת כל יום. אני יודע מה כואב, כי אני חי את זה.</span></div>
     <div class="stn" style="left:165px"><b><i>03</i></b><span><strong>AI שעובד בשבילך</strong>אישורים, תזכורות ומקדמות יוצאים בוואטסאפ לבד. הערב שלך נשאר שלך.</span></div>
 
-    <div class="band" id="band"></div>
+    <svg class="band" id="band" viewBox="-6400 600 6448.7 500" width="6448.7" height="500" aria-hidden="true"><path d="M-6400 1100V680H-8.7C13.4 680 31.3 662.1 31.3 640H48.7V1100Z" fill="#3DDBB0"/></svg>
     <div class="fr" id="fr"><b id="fq">בוא תראה איך זה עובד</b><span class="fa" id="fb" aria-hidden="true"><svg viewBox="0 0 56 28"><path d="M53 14H4M15 3L4 14l11 11"/></svg></span></div>
     <div id="pnls"></div>
 
@@ -474,7 +474,7 @@ const L=ln.getTotalLength();ln.style.strokeDasharray=L;
 const DX=[830,560,290];
 const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
-const PS=3950,PS2=PS+800,MV=700,ST=1250,D=PS2+NP*ST+150;
+const PS=3950,PS2=PS+300,MV=700,ST=1250,D=PS2+NP*ST+150;
 
 function render(){
  const y=cl(scrollY-pageTop(sc),0,D);
@@ -525,18 +525,18 @@ function render(){
   const l=seg(lp,SF[i]+.03,SF[i]+.13);sp2.style.opacity=l.toFixed(3);sp2.style.transform=l<1?`translateY(${((1-eo(l))*14).toFixed(1)}px)`:'';});
 
  /* 4 · "בוא תראה איך זה עובד" נכתב על הפס במסך של העבודות, ונעלם כשהטלפון והמחשב מגיעים */
- const fw=seg(y,PS+MV-40,PS+MV+200),fo=eo(seg(y,PS2+460,PS2+600));op(fr,fw>0?1-fo:0);
+ const fw=seg(y,PS+60,PS+360),fo=eo(seg(y,PS+580,PS+700));op(fr,fw>0?1-fo:0);
  fq.style.clipPath=fw<1?'inset(-20% 0 -20% '+((1-eo(fw))*100).toFixed(1)+'%)':'';fq.style.transform=fo>0?'translateY('+(-fo*20).toFixed(1)+'px)':'';
- const b2=seg(y,PS+MV+160,PS+MV+320);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform='scale('+(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)+')';
+ const b2=seg(y,PS+300,PS+460);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform='scale('+(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)+')';
 
  /* 5 · העבודות: כל אחת נכנסת משמאל, הטלפון והמחשב עולים קצת ונעמדים על הפס */
  const ph=eo(seg(y,PS2+MV-220,PS2+MV+40));pjh.style.opacity=ph.toFixed(3);pjh.style.transform=`translateY(${((1-ph)*24).toFixed(1)}px)`;pjh.style.setProperty('--pm',(seg(y,PS2+MV-100,PS2+MV+80)*100).toFixed(1)+'%');
  pjc.style.opacity=(ph*.75).toFixed(3);
  pnls.forEach((o,k)=>{
-  const a=seg(y,PS2+k*ST+120,PS2+k*ST+MV+40);
-  o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*720).toFixed(1)}px)`;
-  o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*720).toFixed(1)}px)`;
-  o.lb.forEach((l,i)=>{const t=seg(a,.7+i*.08,.86+i*.08);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
+  const a=seg(y,PS+120,PS+MV+40);
+  o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*110).toFixed(1)}px)`;
+  o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*110).toFixed(1)}px)`;
+  o.lb.forEach((l,i)=>{const t=seg(y,PS+700+i*50,PS+860+i*50);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
   /* המלל נשאר באמצע (המסילה זזה והוא לא): יוצא למעלה כשהעבודה הבאה מגיעה, ונכנס מלמטה כמו מסך חדש */
   o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px)';
   const b0=PS2+k*ST,ti=seg(y,b0+(k?560:650),b0+(k?900:980)),to=k<NP-1?seg(y,PS2+(k+1)*ST,PS2+(k+1)*ST+190):0;

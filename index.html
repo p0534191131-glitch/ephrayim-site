@@ -448,7 +448,7 @@ const L=ln.getTotalLength();ln.style.strokeDasharray=L;
 const DX=[830,560,290];
 const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
-const PS=3950,MV=700,ST=1050,D=PS+NP*ST+150;
+const PS=3950,MV=700,ST=1400,D=PS+NP*ST+150;
 
 function render(){
  const y=cl(scrollY-pageTop(sc),0,D);
@@ -515,18 +515,20 @@ function render(){
   o.lb.forEach((l,i)=>{const t=seg(a,.7+i*.08,.86+i*.08);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
   /* המלל נשאר באמצע (המסילה זזה והוא לא): יוצא למעלה כשהעבודה הבאה מגיעה, ונכנס מלמטה כמו מסך חדש */
   o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px)';
-  const ti=seg(y,PS+k*ST+MV*.72,PS+k*ST+MV+220),to=k<NP-1?seg(y,PS+(k+1)*ST,PS+(k+1)*ST+MV*.4):0,xo=eo(seg(to,0,.6));
-  const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(ti,j/n*.35,.45+j/n*.35)),x=eo(seg(to,j/n*.3,.5+j/n*.3));c.style.transform=(v<1||x>0)?'translateY('+(((1-v)-x)*120).toFixed(1)+'%)':'';});
-  [[o.sb,.3],[o.p,.42]].forEach(([el,b])=>{const v=eo(seg(ti,b,b+.3));el.style.opacity=(v*(1-xo)).toFixed(3);el.style.transform=(v<1||xo>0)?'translateY('+((1-v)*18-xo*18).toFixed(1)+'px)':'';});
-  const bt=seg(ti,.58,.9);o.bt.style.opacity=(Math.min(1,bt*2)*(1-xo)).toFixed(3);o.bt.style.transform=bt<1?'scale('+(.7+.3*backOut(bt)).toFixed(3)+')':'';o.bt.style.setProperty('--sh',(-60+190*seg(ti,.85,1)).toFixed(0)+'%');
-  o.tx.style.pointerEvents=bt>.5&&xo<.5?'':'none';
+  const b0=PS+k*ST,ti=seg(y,b0+(k?560:650),b0+(k?900:980)),to=k<NP-1?seg(y,PS+(k+1)*ST,PS+(k+1)*ST+190):0;
+  const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(ti,j/n*.3,.4+j/n*.3)),x=eo(seg(to,j/n*.25,.55+j/n*.25));c.style.transform=(v<1||x>0)?'translateY('+(((1-v)-x)*120).toFixed(1)+'%)':'';});
+  /* תת-הכותרת, הפסקה והכפתור עולים מתוך חריץ, ויוצאים למעלה באותה דרך */
+  [[o.sb,.28],[o.p,.4],[o.bt,.55]].forEach(([el,b],i)=>{const v=eo(seg(ti,b,b+.35)),x=eo(seg(to,.1+i*.12,.6+i*.12)),P=((1-v)*100).toFixed(1),Q=(x*100).toFixed(1);
+   el.style.opacity=v<=0||x>=1?0:1;el.style.transform=v<1?'translateY('+P+'%)':x>0?'translateY(-'+Q+'%)':'';el.style.clipPath=v<1?'inset(0 0 '+P+'% 0)':x>0?'inset('+Q+'% 0 0 0)':'';});
+  o.bt.style.setProperty('--sh',(-60+190*seg(ti,.9,1)).toFixed(0)+'%');
+  o.tx.style.pointerEvents=ti>.8&&to<.2?'':'none';
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
  });
  /* המספר באמצע: עולה עם העבודה הראשונה, ומתגלגל בעדינות ל-02 ול-03 בזמן שהעבודות מתחלפות */
- const ka=eo(seg(seg(y,PS+120,PS+MV+40),.3,.6));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.35,.75));
+ const ka=eo(seg(seg(y,PS+120,PS+MV+40),.3,.6));let kc=0;for(let k=1;k<NP;k++)kc+=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.7));
  pjnI.style.transform='translateY('+((1-ka)*1.1-kc*1.04).toFixed(3)+'em)';
  /* בתוך המסכים: גוללים את העבודה, ובמעבר העבודה הבאה עולה מלמטה, בטלפון ובמחשב יחד */
- let po=0,tk=0;for(let k=0;k<NP;k++){po+=PMX[k]*ss(seg(y,PS+k*ST+MV,k<NP-1?PS+(k+1)*ST:PS+NP*ST+150));if(k>0){const t=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.2,.8));po+=PBH*t;tk+=t;}}
+ let po=0,tk=0;for(let k=0;k<NP;k++){po+=PMX[k]*ss(seg(y,PS+k*ST+(k?930:1010),k<NP-1?PS+(k+1)*ST:PS+NP*ST+150));if(k>0){const t=ss(seg(seg(y,PS+k*ST,PS+k*ST+MV),.29,.71));po+=PBH*t;tk+=t;}}
  pstrip.style.transform='translateY('+(-po).toFixed(1)+'px)';mstrip.style.transform='translateY('+(-tk*100).toFixed(2)+'%)';
  const kk=Math.round(tk);if(kk!==lbK){lbK=kk;PL[0].textContent=PJ[kk].phL;PL[1].textContent=PJ[kk].monL;}
  pjn.textContent=String(kk+1).padStart(2,'0');

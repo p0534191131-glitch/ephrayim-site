@@ -173,15 +173,16 @@ img{display:block}
 
 /* ===== צור קשר ===== */
 /* 6 · איך זה עובד: אחרי העבודות. קו באותו עובי, שנמשך כשמגיעים אליו, ושלוש נקודות שנדלקות */
-.hw{padding:var(--sp4) 0 calc(var(--sp4) + 20px);color:var(--n);background:var(--cbg)}
+.hw{padding:var(--sp4) 0 330px;color:var(--n);background:var(--cbg)}
 .hwl{font-size:24px;font-weight:700;margin:0}
+.hw .hwl,.hw h2{text-align:center}
 .hw h2{font-size:64px;line-height:1.05;font-weight:700;margin:6px 0 0}
 .hw h2 .mk{--mkw:0%;transition:--mkw .7s .3s}.hw.in h2 .mk{--mkw:100%}
 .hws{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:64px 0 0;padding:0;list-style:none}
 .hws li{position:relative;text-align:center}
 .hws b{display:block;font-size:48px;line-height:1;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
 .hws i{display:block;width:34px;height:34px;margin:18px auto 0;visibility:hidden}
-.hws p{max-width:300px;margin:24px auto 0;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.hws p{max-width:260px;margin:24px auto 0;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
 .hws strong{display:block;font-size:24px;color:var(--n);margin-bottom:6px}
 .hws li.on b,.hws li.on p{opacity:1;transform:none}.hws li.on p{transition-delay:.15s}
 
@@ -190,23 +191,25 @@ img{display:block}
 .st h2{font-size:64px;line-height:1.05;font-weight:700;margin:6px 0 0}
 .st h2 .mk{--mkw:0%;transition:--mkw .7s .3s}.st.in h2 .mk{--mkw:100%}
 .sts{list-style:none;margin:56px 0 0;padding:0;display:grid;gap:34px}
-.sts li{margin-left:var(--lane,0px);display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;background:#FFFDF8;border-radius:28px;padding:30px 38px;box-shadow:0 24px 50px -26px rgba(15,30,110,.4);opacity:0;transform:translateX(-40px);transition:opacity .6s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.sts li{width:calc(50% - 64px);display:grid;grid-template-columns:1fr 140px;gap:24px;align-items:center;background:#FFFDF8;border-radius:28px;padding:26px 28px;box-shadow:0 24px 50px -26px rgba(15,30,110,.4);opacity:0;transform:translateX(40px);transition:opacity .6s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.sts li:nth-child(even){margin-right:auto;transform:translateX(-40px)}
+.sts li:nth-child(n+2){margin-top:-60px}
 .sts li.on{opacity:1;transform:none}
 .sn b{display:block;font-size:48px;line-height:1.1;font-weight:700}.sn span{display:block;color:#0B7A5E;font-weight:700;font-size:20px;margin-top:2px}
-.sbf,.saf{display:flex;gap:14px;align-items:baseline;margin:16px 0 0;font-size:20px;line-height:1.45}
+.sbf,.saf{display:flex;gap:12px;align-items:baseline;margin:14px 0 0;font-size:18px;line-height:1.45}
 .tg{flex:none;font-size:16px;font-weight:700;padding:2px 14px;border-radius:999px;background:rgba(15,30,110,.08)}
 .saf .tg{background:var(--m)}
-.bt2{position:relative;color:rgba(15,30,110,.8);transition:color .4s 1s}
-.bt2 i{position:absolute;right:-4px;left:-4px;top:55%;height:3px;border-radius:2px;background:var(--m);transform:scaleX(0);transform-origin:right;transition:transform .6s cubic-bezier(.6,0,.2,1) .55s}
-.sts li.on .bt2 i{transform:none}.sts li.on .bt2{color:rgba(15,30,110,.45)}
+.bt2{color:rgba(15,30,110,.8);background:linear-gradient(var(--m),var(--m)) no-repeat right 62%/0% 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .6s cubic-bezier(.6,0,.2,1) .55s,color .4s 1s}
+.bt2 i{display:none}
+.sts li.on .bt2{background-size:100% 3px;color:rgba(15,30,110,.45)}
 .saf{opacity:0;transform:translateY(12px);transition:opacity .5s 1.15s,transform .5s 1.15s}.sts li.on .saf{opacity:1;transform:none}
 .saf>span:last-child{font-weight:700}
-.sim{height:220px;border-radius:22px;overflow:hidden;background:#EEE7DB;box-shadow:0 14px 30px -16px rgba(15,30,110,.45)}
+.sim{height:170px;border-radius:22px;overflow:hidden;background:#EEE7DB;box-shadow:0 14px 30px -16px rgba(15,30,110,.45)}
 .sim img{width:100%;height:100%;object-fit:cover;object-position:top}
 
 /* הקו הרציף מהפס של העבודות ועד הפוטר: באותו עובי, ונקודות שקופצות כשהוא מגיע */
 .flow{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:3}
-#fl{fill:none;stroke:var(--m);stroke-width:17.39}
+.flow .fp{fill:none;stroke:var(--m);stroke-width:17.39}
 .fd{fill:var(--n);stroke:var(--c);stroke-width:6;transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.2,1.6,.4,1)}.fd.on{transform:none}
 .ft{position:relative;overflow:hidden;background:radial-gradient(1200px 820px at 16% 100%,#1A31A0 0%,var(--n) 58%,#0C1960 100%);color:var(--c);padding:var(--sp4) 0 40px}
 .ft>.wrap{position:relative;z-index:1}
@@ -374,7 +377,7 @@ img{display:block}
  </div>
  <div class="wrap"><div class="bar"><img src="assets/img/logo-cream.svg" alt="אפרים קוסטנטינר" width="156" height="44"><span>© <span id="yr">2026</span> אפרים קוסטנטינר · אתרים ומערכות AI לעסקים</span></div></div>
 </footer>
-<svg class="flow" id="flow" aria-hidden="true"><path id="fl"/><g id="fdots"></g></svg>
+<svg class="flow" id="flow" aria-hidden="true"><path id="fwL" class="fp"/><path id="fwR" class="fp"/><path id="fcb" class="fp"/><path id="fl" class="fp"/><g id="fdots"></g></svg>
 
 <a class="wa-float" href="https://wa.me/972534191131" data-wa aria-label="שיחה בוואטסאפ"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 <button class="a11y" id="a11y" type="button" aria-pressed="false" aria-label="עצירת אנימציות"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.9" fill="currentColor" stroke="none"/><path d="M4.5 8.6 12 10l7.5-1.4M12 10v5.2m0 0-3.6 6.2M12 15.2l3.6 6.2"/></svg></button>
@@ -569,36 +572,45 @@ const flow=$('#flow'),fl=$('#fl'),fdots=$('#fdots'),stl=$('#sts'),ftLn=$('#ftln'
 $('#fst').innerHTML=Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2-Math.PI/2,c=Math.cos(a),s=Math.sin(a),q=n=>n.toFixed(1);return '<g style="--d:'+(i*.035).toFixed(3)+'s"><line x1="'+q(c*46)+'" y1="'+q(s*46)+'" x2="'+q(c*132)+'" y2="'+q(s*132)+'" pathLength="1"/><circle cx="'+q(c*132)+'" cy="'+q(s*132)+'" r="9.5"/></g>';}).join('');
 let FL=null;
 const ctr=el=>{const r=el.getBoundingClientRect();return{x:r.left+r.width/2+scrollX,y:r.top+r.height/2+scrollY};};
+const fwL=$('#fwL'),fwR=$('#fwR'),fcb=$('#fcb');
 function buildFlow(){
- const de=document.documentElement,Wd=de.clientWidth,wr=hws.querySelector('.wrap').getBoundingClientRect(),cl0=wr.left+32,cr0=wr.right-32;
- const xr=Math.min(Wd-34,cr0+50),xl=Math.max(28,cl0-50);
- stl.style.setProperty('--lane',Math.max(0,xl+44-cl0)+'px');
- const sd=$$('.hws i').map(ctr),y0=sd[0].y,top0=pageTop(hws),ftTop=pageTop(ft),R=34;
+ const de=document.documentElement,Wd=de.clientWidth,cx=Wd/2,wr=hws.querySelector('.wrap').getBoundingClientRect(),cl0=wr.left+32,e=8.7;
+ const sd=$$('.hws i').map(ctr),y0=sd[0].y,top0=pageTop(hws),ftTop=pageTop(ft),fh=(y0-top0)/.45,yb=top0+fh;
  const cards=$$('#sts li').map(li=>({li,y:ctr(li).y}));
- const dh=de.scrollHeight;flow.setAttribute('width',Wd);flow.setAttribute('height',dh);
- fl.setAttribute('d','M'+xr+' '+top0+'V'+(y0-R)+'Q'+xr+' '+y0+' '+(xr-R)+' '+y0+'H'+(xl+R)+'Q'+xl+' '+y0+' '+xl+' '+(y0+R)+'V'+(ftTop+2));
- const L=fl.getTotalLength();fl.style.strokeDasharray=L;
- const pts=[...sd.map(p=>[p.x,y0]),...cards.map(c=>[xl,c.y])];
+ flow.setAttribute('width',Wd);flow.setAttribute('height',de.scrollHeight);
+ /* שני קירות המשפך: יורדים מהקצוות של הפס ומתכנסים לאמצע */
+ const wall=x0=>'M'+x0+' '+top0+'C'+x0+' '+(top0+fh)+' '+cx+' '+(yb-.2*fh)+' '+cx+' '+yb;
+ fwL.setAttribute('d',wall(e));fwR.setAttribute('d',wall(Wd-e));
+ const LW=fwL.getTotalLength(),ws=[];for(let l=0;l<=LW;l+=3)ws.push([l,fwL.getPointAtLength(l)]);
+ const xAt=yy=>{let b=ws[0][1];for(const s of ws){if(s[1].y<=yy)b=s[1];else break;}return b.x;};
+ const xL=xAt(y0),xR=Wd-xL;
+ /* פס השלבים: חוצה את המשפך מימין לשמאל דרך שלוש הנקודות */
+ fcb.setAttribute('d','M'+xR+' '+y0+'H'+xL);
+ /* מהקצה של המשפך הקו ממשיך באמצע, לאורך סיפורי ההצלחה, עד הפוטר */
+ fl.setAttribute('d','M'+cx+' '+(yb-1)+'V'+(ftTop+2));
+ const LC=fcb.getTotalLength(),LT=fl.getTotalLength();
+ [[fwL,LW],[fwR,LW],[fcb,LC],[fl,LT]].forEach(([p,l])=>p.style.strokeDasharray=l);
+ const pts=[...sd.map(p=>[p.x,y0]),...cards.map(c=>[cx,c.y])];
  fdots.innerHTML=pts.map(([x,y])=>'<circle class="fd" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="13"/>').join('');
- const samp=[];for(let l=0;l<=L;l+=4){const p=fl.getPointAtLength(l);samp.push([l,p.x,p.y]);}
- const near=(x,y)=>{let b=0,bd=1e12;for(const s of samp){const d=(s[1]-x)**2+(s[2]-y)**2;if(d<bd){bd=d;b=s[0];}}return b;};
  const fds=$$('#fdots .fd'),lis=$$('.hws li');
- const marks=pts.map((p,i)=>({len:near(p[0],p[1]),dot:fds[i],el:i<3?lis[i]:cards[i-3].li}));
- /* בפוטר: הקו יורד ופונה אל הקרן השמאלית של הכוכב */
- const fh=ft.offsetHeight,bl=ft.querySelector('.blf').getBoundingClientRect(),cy=Math.max(300,bl.top+bl.height/2+scrollY-ftTop),xs=xl+240;
- ftLn.setAttribute('width',Wd);ftLn.setAttribute('height',fh);
- ftLp.setAttribute('d','M'+xl+' 0V'+(cy-30)+'Q'+xl+' '+cy+' '+(xl+30)+' '+cy+'H'+(xs-206));
+ const marks=[...sd.map((p,i)=>({cb:1,len:xR-p.x,dot:fds[i],el:lis[i]})),...cards.map((c,i)=>({cb:0,len:c.y-yb,dot:fds[3+i],el:c.li}))];
+ /* בפוטר: הקו יורד מהאמצע, פונה שמאלה ונכנס לקרן העליונה של הכוכב */
+ const fH=ft.offsetHeight,bl=ft.querySelector('.blf').getBoundingClientRect(),cy=Math.max(320,bl.top+bl.height/2+scrollY-ftTop),xs=cl0+200;
+ ftLn.setAttribute('width',Wd);ftLn.setAttribute('height',fH);
+ ftLp.setAttribute('d','M'+cx+' 0V30Q'+cx+' 60 '+(cx-30)+' 60H'+(xs+30)+'Q'+xs+' 60 '+xs+' 90V'+(cy-200));
  const FLen=ftLp.getTotalLength();ftLp.style.strokeDasharray=FLen;
  ftStar.style.left=(xs-250)+'px';ftStar.style.top=(cy-250)+'px';
- FL={L,start:top0,marks,FLen,ftTop,y0,lenA:near(xr-R,y0),lenB:near(xl,y0+R),K:300};drawFlow();
+ FL={ws,LW,LC,LT,y0,yb,marks,FLen,ftTop};drawFlow();
 }
 function drawFlow(){
  if(!FL)return;
- const hd=scrollY+innerHeight*.82,{y0,lenA,lenB,K}=FL;
- const len=cl(hd<y0?lenA*cl((hd-FL.start)/(y0-FL.start)):hd<y0+K?lenA+(lenB-lenA)*(hd-y0)/K:lenB+(hd-y0-K),0,FL.L);
- fl.style.strokeDashoffset=(FL.L-len).toFixed(1);
- FL.marks.forEach(m=>{const on=len>=m.len-2;m.dot.classList.toggle('on',on);m.el.classList.toggle('on',on);});
- const f2=len<FL.L-1?0:cl(hd-K-FL.ftTop,0,FL.FLen);
+ const hd=scrollY+innerHeight*.7,{ws,LW,LC,LT,y0,yb}=FL;
+ let wl=0;for(const s of ws){if(s[1].y<=hd)wl=s[0];else break;}if(hd>=yb)wl=LW;
+ fwL.style.strokeDashoffset=fwR.style.strokeDashoffset=(LW-wl).toFixed(1);
+ const cb=LC*ss(seg(hd,y0,y0+240));fcb.style.strokeDashoffset=(LC-cb).toFixed(1);
+ const tl=cl(hd-yb,0,LT);fl.style.strokeDashoffset=(LT-tl).toFixed(1);
+ FL.marks.forEach(m=>{const on=(m.cb?cb:tl)>=m.len-2;m.dot.classList.toggle('on',on);m.el.classList.toggle('on',on);});
+ const f2=tl<LT-1?0:cl((hd-FL.ftTop)*1.6,0,FL.FLen);
  ftLp.style.strokeDashoffset=(FL.FLen-f2).toFixed(1);
  if(f2>=FL.FLen-1)ft.classList.add('boom');else if(f2<FL.FLen*.4)ft.classList.remove('boom');
 }

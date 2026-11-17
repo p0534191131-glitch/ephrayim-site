@@ -15,76 +15,74 @@
 @font-face{font-family:GS;src:url(assets/fonts/google-sans-500.woff2) format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:GS;src:url(assets/fonts/google-sans-700.woff2) format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:Hand;src:url(assets/fonts/hand-700.woff2) format('woff2');font-weight:700;font-display:swap}
-:root{--fs-a:48px;--fs-c:18px;--sp4:96px;--n:#0F1E6E;--c:#F6F1E7;--m:#3DDBB0;--soft:#DDE1F5;
- --cbg:radial-gradient(1100px 760px at 30% 38%,#FCF9F2 0%,#F6F1E7 58%,#EFE9DB 100%);
- --nbg:radial-gradient(560px 480px at 68% 40%,rgba(61,219,176,.17),rgba(61,219,176,0) 72%),radial-gradient(1100px 760px at 68% 40%,#1A31A0 0%,#0F1E6E 58%,#0C1960 100%)}
+:root{--px:min(.0694444vw,.1234568vh,1.25px);--s1:calc(64*var(--px));--s2:calc(40*var(--px));--s3:calc(18*var(--px));--fs-a:calc(64*var(--px));--fs-c:calc(18*var(--px));--sp4:calc(96*var(--px));--n:#0F1E6E;--c:#F6F1E7;--m:#3DDBB0;--soft:#DDE1F5;
+ --cbg:radial-gradient(calc(1100*var(--px)) calc(760*var(--px)) at 30% 38%,#FCF9F2 0%,#F6F1E7 58%,#EFE9DB 100%);
+ --nbg:radial-gradient(calc(560*var(--px)) calc(480*var(--px)) at 68% 40%,rgba(61,219,176,.17),rgba(61,219,176,0) 72%),radial-gradient(calc(1100*var(--px)) calc(760*var(--px)) at 68% 40%,#1A31A0 0%,#0F1E6E 58%,#0C1960 100%)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:GS,system-ui,sans-serif;color:var(--n);background:var(--c);font-size:var(--fs-c);line-height:1.6;overflow-x:clip}
+body{margin:0;font-family:GS,system-ui,sans-serif;color:var(--n);background:var(--c) var(--cbg) fixed;font-size:var(--fs-c);line-height:1.6;overflow-x:clip}
 h1,h2,h3,p,ul,ol{margin:0}ul,ol{padding:0;list-style:none}
 em{font-style:normal}a{color:inherit}button{font:inherit;color:inherit}
 img{display:block}
-:focus-visible{outline:3px solid var(--m);outline-offset:3px}
-.wrap{width:100%;max-width:1304px;margin:0 auto;padding:0 32px}
-.tq{color:var(--m)}
+:focus-visible{outline:calc(3*var(--px)) solid var(--m);outline-offset:calc(3*var(--px))}
+.wrap{width:100%;max-width:calc(1304*var(--px));margin:0 auto;padding:0 calc(32*var(--px))}
+.tq{color:var(--m);font-size:1.12em}
 .w{display:inline-block}
-.btn-n,.btn-m{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:18px;padding:15px 32px;border-radius:999px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;position:relative;overflow:hidden}
+.btn-n,.btn-m{display:inline-flex;align-items:center;gap:calc(12*var(--px));font-weight:700;font-size:var(--s3);padding:calc(15*var(--px)) calc(32*var(--px));border-radius:calc(999*var(--px));text-decoration:none;white-space:nowrap;border:0;cursor:pointer;position:relative;overflow:hidden}
 .btn-n{background:var(--n);color:var(--c)}.btn-m{background:var(--m);color:var(--n)}
-.btn-n svg,.btn-m svg,.hd-btn svg{width:22px;height:22px;flex:none}
+.btn-n svg,.btn-m svg,.hd-btn svg{width:calc(22*var(--px));height:calc(22*var(--px));flex:none}
 .btn-n::after,.btn-m::after{content:"";position:absolute;top:0;bottom:0;left:var(--sh,130%);width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg)}
-.pill{display:inline-block;font-weight:700;font-size:18px;padding:5px 18px;border-radius:999px;white-space:nowrap}
-.ckc{width:40px;height:40px;border-radius:50%;background:var(--m);color:var(--n);display:grid;place-items:center}
+.pill{display:inline-block;font-weight:700;font-size:var(--s3);padding:calc(5*var(--px)) calc(18*var(--px));border-radius:calc(999*var(--px));white-space:nowrap}
+.ckc{width:calc(40*var(--px));height:calc(40*var(--px));border-radius:50%;background:var(--m);color:var(--n);display:grid;place-items:center}
 .ckc svg{width:55%;height:55%;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
-.mk{background:linear-gradient(transparent 62%,var(--m) 62% 92%,transparent 92%) no-repeat right/var(--mkw,100%) 100%;padding:0 6px}
+.mk{color:var(--m);font-size:1.12em}
+.htx h1 .mk{background:none;padding:0;font-size:1.12em;color:var(--m)}
 
 /* ===== הדר ===== */
-.hd{position:fixed;z-index:60;top:14px;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 32px));height:64px;display:flex;align-items:center;gap:24px;padding:0 24px 0 9px;background:rgba(246,241,231,.86);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,.75);border-radius:999px;box-shadow:0 12px 32px -14px rgba(15,30,110,.35)}
-.hd-logo img{height:40px;width:auto}
-.hd-nav{flex:1;display:flex;justify-content:center;gap:30px}
-.hd-nav a{font-weight:500;text-decoration:none;padding:6px 3px;background:linear-gradient(transparent 62%,var(--m) 62% 90%,transparent 90%) no-repeat right/0% 100%;transition:background-size .3s}
-.hd-nav a:hover,.hd-nav a.on{background-size:100% 100%}
-.hd-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;background:var(--n);color:var(--c);text-decoration:none;padding:11px 22px;border-radius:999px;white-space:nowrap}
+.hd{position:fixed;z-index:60;top:calc(14*var(--px));left:50%;transform:translateX(-50%);width:min(calc(1240*var(--px)),calc(100% - calc(32*var(--px))));height:calc(64*var(--px));display:flex;align-items:center;gap:calc(24*var(--px));padding:0 calc(24*var(--px)) 0 calc(9*var(--px));background:rgba(246,241,231,.86);-webkit-backdrop-filter:blur(calc(14*var(--px))) saturate(140%);backdrop-filter:blur(calc(14*var(--px))) saturate(140%);border:calc(1*var(--px)) solid rgba(255,255,255,.75);border-radius:calc(999*var(--px));box-shadow:0 calc(12*var(--px)) calc(32*var(--px)) calc(-14*var(--px)) rgba(15,30,110,.35)}
+.hd-logo img{height:calc(40*var(--px));width:auto}
+.hd-nav{flex:1;display:flex;justify-content:center;gap:calc(30*var(--px))}
+.hd-nav a{font-weight:500;text-decoration:none;padding:calc(6*var(--px)) calc(3*var(--px));transition:color .3s}
+.hd-nav a:hover,.hd-nav a.on{color:var(--m);-webkit-text-stroke:calc(1.8*var(--px)) var(--n);paint-order:stroke fill}
+.hd-btn{display:inline-flex;align-items:center;gap:calc(8*var(--px));font-weight:700;background:var(--n);color:var(--c);text-decoration:none;padding:calc(11*var(--px)) calc(22*var(--px));border-radius:calc(999*var(--px));white-space:nowrap}
 
 /* ===== הסצנה: מסך אחד נעוץ, והכול קורה בו לפי הגלגלת ===== */
-.sc{position:relative;height:calc(100vh + 7200px)}
-.pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--cbg)}
+.sc{position:relative;height:calc(100vh + calc(7200*var(--px)))}
+.pin{position:sticky;top:0;height:100vh;overflow:hidden}
 /* הנייבי של העיגול הוא שכבה על כל המסך שנחתכת לעיגול. כשהעיגול גדל, כל המסך כחול */
-.nvw{position:absolute;inset:0;filter:drop-shadow(0 36px 34px rgba(15,30,110,.38))}
+.nvw{position:absolute;inset:0;filter:drop-shadow(0 calc(36*var(--px)) calc(34*var(--px)) rgba(15,30,110,.38))}
 .nvw.flat{filter:none}
 .nv{position:absolute;inset:0;background:var(--nbg);clip-path:circle(0 at 0 0)}
-.cv{position:absolute;left:50%;top:50%;width:1440px;height:810px;margin:-405px 0 0 -720px;transform:scale(var(--u,1));font-size:18px}
+.cv{position:absolute;left:50%;top:50%;width:calc(1440*var(--px));height:calc(810*var(--px));margin:calc(-405*var(--px)) 0 0 calc(-720*var(--px));transform:scale(var(--u,1));--px:1px;--s1:calc(64*var(--px));--s2:calc(40*var(--px));--s3:calc(18*var(--px));--sp4:calc(96*var(--px));--fs-c:calc(18*var(--px));font-size:var(--s3)}
 .cv>*,.trk>*{position:absolute}
 /* המסילה: כל מה שזז שמאלה בסוף. נגללת כולה ימינה, כך שהעבודות נכנסות משמאל */
-.trk{left:0;top:0;width:1440px;height:810px;will-change:transform}
+.trk{left:0;top:0;width:calc(1440*var(--px));height:calc(810*var(--px));will-change:transform}
 
 /* 1 · פתיחה */
-.htx{right:100px;top:140px;width:640px}
-.nm{font-size:24px;font-weight:700;line-height:1.3}
-.htx h1{font-size:96px;line-height:1.02;font-weight:700;margin-top:10px}
+.htx{right:calc(100*var(--px));top:0;width:calc(780*var(--px));height:calc(810*var(--px));padding-top:calc(64*var(--px));display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.nm{font-size:var(--s3);font-weight:700;line-height:1.3}
+.htx h1{font-size:var(--s1);line-height:1.05;font-weight:700;margin-top:0}
 .htx h1 .l,.hx .l,.ans .l{display:block;white-space:nowrap;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
-.htx .lead{max-width:540px;margin-top:26px}
-.htx .btn-n{margin-top:26px}
-.htx .note{margin-top:12px;opacity:.72}
-.deco{left:0;top:0;width:1440px;height:810px;pointer-events:none}
+.htx .lead{max-width:calc(540*var(--px));margin-top:calc(33*var(--px))}
+.htx .btn-n{margin-top:calc(34.6*var(--px))}
+.htx .note{margin-top:calc(12*var(--px));opacity:.72}
+.deco{left:0;top:0;width:calc(1440*var(--px));height:calc(810*var(--px));pointer-events:none}
 .deco>*{position:absolute}
-.bdg{left:472px;top:512px;width:176px;height:176px;border-radius:50%;background:var(--c);box-shadow:0 14px 30px -14px rgba(15,30,110,.55);z-index:3}
-.bdg svg{position:absolute;left:13px;top:13px;width:150px;height:150px}
+.bdg{left:calc(472*var(--px));top:calc(512*var(--px));width:calc(176*var(--px));height:calc(176*var(--px));border-radius:50%;background:var(--c);box-shadow:0 calc(14*var(--px)) calc(30*var(--px)) calc(-14*var(--px)) rgba(15,30,110,.55);z-index:3}
+.bdg svg{position:absolute;left:calc(13*var(--px));top:calc(13*var(--px));width:calc(150*var(--px));height:calc(150*var(--px))}
 /* נעים מאוד: בועת דיבור מעל הראש, קופצת כשהעיגול נפתח ונעלמת בסוף הסיפור */
-.say{left:330px;top:166px;padding:10px 26px 16px;background:var(--c);color:var(--n);border-radius:26px;font-family:Hand,GS,sans-serif;font-weight:700;font-size:48px;line-height:1;white-space:nowrap;transform-origin:30px 100%;opacity:0;visibility:hidden;box-shadow:0 18px 30px -14px rgba(5,12,60,.55)}
-.say::after{content:'';position:absolute;left:30px;bottom:-15px;width:30px;height:20px;background:var(--c);clip-path:polygon(0 0,100% 0,8% 100%)}
-.say span{display:block}
-.s1{left:80px;top:606px;background:var(--n);color:var(--c);box-shadow:0 12px 24px -12px rgba(15,30,110,.6);z-index:3}
-.s2{left:116px;top:658px;background:var(--m);color:var(--n);box-shadow:0 12px 24px -12px rgba(15,30,110,.5);z-index:3}
+.s1{left:calc(80*var(--px));top:calc(606*var(--px));background:var(--n);color:var(--c);box-shadow:0 calc(12*var(--px)) calc(24*var(--px)) calc(-12*var(--px)) rgba(15,30,110,.6);z-index:3}
+.s2{left:calc(116*var(--px));top:calc(658*var(--px));background:var(--m);color:var(--n);box-shadow:0 calc(12*var(--px)) calc(24*var(--px)) calc(-12*var(--px)) rgba(15,30,110,.5);z-index:3}
 /* התמונה שלו: הוא עצמו (רקע שקוף) בתוך העיגול. בסוף הוא מרכז הכוכב */
-.me{left:0;top:0;width:460px;height:460px;transform-origin:0 0;will-change:transform;z-index:2}
-.bgd{position:absolute;left:0;top:0;width:460px;height:460px;overflow:visible;pointer-events:none}
-.fig{position:absolute;inset:0;clip-path:circle(var(--fr,230px) at 230px 230px);opacity:0}
-.fig img{position:absolute;left:-30px;top:-90px;width:517px;max-width:none;height:auto}
-.rg{position:absolute;left:0;top:0;width:460px;height:460px;transform:rotate(-90deg);overflow:visible;pointer-events:none}
+.me{left:0;top:0;width:calc(460*var(--px));height:calc(460*var(--px));transform-origin:0 0;will-change:transform;z-index:2}
+.bgd{position:absolute;left:0;top:0;width:calc(460*var(--px));height:calc(460*var(--px));overflow:visible;pointer-events:none}
+.fig{position:absolute;inset:0;clip-path:circle(var(--fr,calc(230*var(--px))) at calc(230*var(--px)) calc(230*var(--px)));opacity:0}
+.fig img{position:absolute;left:calc(-30*var(--px));top:calc(-90*var(--px));width:calc(517*var(--px));max-width:none;height:auto}
+.rg{position:absolute;left:0;top:0;width:calc(460*var(--px));height:calc(460*var(--px));transform:rotate(-90deg);overflow:visible;pointer-events:none}
 .rg circle{fill:none}
 .rn{stroke:var(--n);stroke-width:18}
 .rt{stroke:var(--m);stroke-width:4}
-.rays{position:absolute;left:-270px;top:-270px;width:1000px;height:1000px;overflow:visible;pointer-events:none}
+.rays{position:absolute;left:calc(-270*var(--px));top:calc(-270*var(--px));width:calc(1000*var(--px));height:calc(1000*var(--px));overflow:visible;pointer-events:none}
 .rays line{stroke:var(--m);stroke-width:40;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
 .rays circle{fill:var(--m);transform:scale(0);transform-box:fill-box;transform-origin:center}
 /* כניסה בטעינה */
@@ -101,7 +99,7 @@ img{display:block}
 @keyframes ring{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 @keyframes rise{from{transform:translateY(110%)}}
 @keyframes mark{from{--mkw:0%}to{--mkw:100%}}
-@keyframes fade{from{opacity:0;transform:translateY(16px)}}
+@keyframes fade{from{opacity:0;transform:translateY(calc(16*var(--px)))}}
 @keyframes bpop{from{opacity:0;transform:scale(.6)}}
 @keyframes shine{from{--sh:-60%}to{--sh:130%}}
 @keyframes write{from{clip-path:inset(-20% 0 -20% 100%)}to{clip-path:inset(-20% 0 -20% -5%)}}
@@ -110,161 +108,179 @@ img{display:block}
 @property --sh{syntax:'<percentage>';inherits:true;initial-value:130%}
 
 /* 2 · הסיפור שלי, ליד התמונה, על הכחול: פסקה אחת שנדלקת מילה אחרי מילה בגלילה */
-.sp{right:80px;top:0;width:740px;height:810px;padding-top:64px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:var(--c);visibility:hidden;opacity:0}
-.sl{font-size:16px;font-weight:700;color:var(--m);margin:0 0 6px}
-.sh{font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap;margin:0 0 26px}
-.stx{font-size:24px;line-height:1.6;color:var(--soft);margin:0 0 34px;max-width:640px;text-wrap:pretty}
+.sp{right:calc(100*var(--px));top:0;width:calc(740*var(--px));height:calc(810*var(--px));padding-top:calc(64*var(--px));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:var(--c);visibility:hidden;opacity:0}
+.sl{font-size:var(--s3);font-weight:700;color:var(--m);margin:0 0 calc(8*var(--px))}
+.sh{font-size:var(--s1);line-height:1.05;font-weight:700;margin:0 0 calc(33*var(--px))}
+.stx{font-size:var(--s3);line-height:1.6;color:var(--soft);margin:0 0 calc(34.6*var(--px));max-width:calc(640*var(--px));text-wrap:pretty}
 .stx .sw{opacity:.28}
-.stx b{font-weight:700;color:var(--c);white-space:nowrap;padding-bottom:3px;background:linear-gradient(var(--m),var(--m)) no-repeat 100% 100%/calc(var(--k,0)*100%) 3px}
+.stx b{font-weight:700;color:var(--m);white-space:nowrap}
 
 /* 3 · איך זה עובד: על הרקע הבהיר. הכוכב והקו */
-.hx{left:100px;top:84px;width:840px;color:var(--n);visibility:hidden;opacity:0}
-.hx p{font-size:24px;font-weight:700;line-height:1.3}
-.hx h2{font-size:64px;line-height:1.02;font-weight:700;margin-top:8px}
+.hx{left:calc(100*var(--px));top:calc(112*var(--px));width:calc(840*var(--px));color:var(--n);visibility:hidden;opacity:0}
+.hx p{font-size:var(--s3);font-weight:700;line-height:1.3}
+.hx h2{font-size:var(--s1);line-height:1.02;font-weight:700;margin-top:calc(8*var(--px))}
 .hx h2 .l{display:inline-block}.hx h2 .l+.l{margin-right:.26em}
-.lnv{left:0;top:0;width:1440px;height:810px;overflow:visible;pointer-events:none}
-.stn{width:250px;top:260px;color:var(--n)}
-.stn b{display:block;text-align:center;font-size:48px;line-height:1;font-weight:700;overflow:hidden}
+.lnv{left:0;top:0;width:calc(1440*var(--px));height:calc(810*var(--px));overflow:visible;pointer-events:none;z-index:2}
+.stn{width:calc(250*var(--px));top:calc(260*var(--px));color:var(--n)}
+.stn b{display:block;text-align:center;font-size:var(--s2);line-height:1;font-weight:700;overflow:hidden}
 .stn b i{display:inline-block;font-style:normal}
-.stn span{position:relative;display:block;min-height:196px;margin:62px 0 0;padding:20px 22px 22px;background:#FFFDF8;border-radius:22px;box-shadow:0 18px 36px -18px rgba(15,30,110,.38);font-weight:500;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8)}
-.stn span::before{content:'';position:absolute;right:calc(50% - 1.5px);top:-16px;width:3px;height:16px;background:var(--n)}
-.stn strong{display:block;font-size:24px;line-height:1.2;font-weight:700;color:var(--n);margin-bottom:8px}
+.stn span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:calc(260*var(--px));margin:calc(62*var(--px)) 0 0;padding:calc(26*var(--px)) calc(26*var(--px)) calc(28*var(--px));background:var(--n);border-radius:calc(24*var(--px));box-shadow:0 calc(22*var(--px)) calc(40*var(--px)) calc(-18*var(--px)) rgba(15,30,110,.6);outline:calc(2.5*var(--px)) solid var(--m);outline-offset:calc(-11*var(--px));text-align:center;font-weight:500;font-size:var(--s3);line-height:1.45;color:var(--soft)}
+.stn span::before{content:'';position:absolute;right:calc(50% - calc(1.5*var(--px)));top:calc(-16*var(--px));width:calc(3*var(--px));height:calc(16*var(--px));background:var(--m)}
+.stn .stb{display:block;font-style:normal}
+.stn strong{display:block;font-size:var(--s3);line-height:1.2;font-weight:700;color:var(--m);margin-bottom:calc(8*var(--px))}
 
 /* 4 · הפס: מתחיל ב"ומה איתך?" וממשיך שמאלה מתחת לכל העבודות */
-.band{left:-6400px;top:600px;width:6448.7px;height:500px;overflow:visible;z-index:1}
-.fr{left:-1440px;width:1440px;top:680px;height:130px;display:flex;align-items:center;justify-content:center;gap:26px;visibility:hidden;opacity:0;z-index:3}
-.fr b{display:block;font-size:48px;line-height:1.15;font-weight:700;white-space:nowrap}
-.fa svg{display:block;width:56px;height:28px;fill:none;stroke:var(--n);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.5s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateX(-10px)}}
+.band{left:calc(-6400*var(--px));top:calc(600*var(--px));width:calc(6448.7*var(--px));height:calc(900*var(--px));overflow:visible;z-index:1}
+.fr{left:calc(-1440*var(--px));width:calc(1440*var(--px));top:calc(680*var(--px));height:calc(130*var(--px));display:flex;align-items:center;justify-content:center;gap:calc(26*var(--px));visibility:hidden;opacity:0;z-index:3}
+.fr b{display:block;font-size:var(--s1);line-height:1.15;font-weight:700;white-space:nowrap}
+.fa svg{display:block;width:calc(56*var(--px));height:calc(28*var(--px));fill:none;stroke:var(--n);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.5s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(calc(-10*var(--px)))}}
 
 /* 5 · העבודות: לכל אחת מסך משלה משמאל לקודמת. הטלפון והמחשב עומדים על הפס */
-.pjh{left:0;right:0;top:100px;text-align:center;font-size:48px;line-height:1.15;font-weight:700;opacity:0;pointer-events:none}
-.pjh .mk{--mkw:var(--pm,0%)}
-.pjc{left:0;right:0;top:162px;text-align:center;font-weight:700;opacity:0;direction:ltr;pointer-events:none}
+.pjh{left:calc(100*var(--px));right:calc(100*var(--px));top:calc(100*var(--px));text-align:center;font-size:var(--s1);line-height:1.15;font-weight:700;opacity:0;pointer-events:none}
+.pjh .mk{background:none;padding:0;font-size:1.12em;color:var(--m)}
+.pjc{left:0;right:0;top:calc(176*var(--px));text-align:center;font-weight:700;opacity:0;direction:ltr;pointer-events:none}
 .pjc i{font-style:normal;opacity:.45}
-.pnl{top:0;width:1440px;height:810px}
+.pnl{top:0;width:calc(1440*var(--px));height:calc(810*var(--px))}
 .pnl .mon,.pnl .phn{z-index:2}
 .pnl>*{position:absolute}
-.pnl .mon{left:800px;top:258px;width:540px;aspect-ratio:1400/1120;filter:drop-shadow(0 26px 30px rgba(15,30,110,.3))}
+.pnl .mon{left:calc(800*var(--px));top:calc(258*var(--px));width:calc(540*var(--px));aspect-ratio:1400/1120;filter:drop-shadow(0 calc(26*var(--px)) calc(30*var(--px)) rgba(15,30,110,.3))}
 .mon .scr{position:absolute;left:4.357%;top:5%;width:91.43%;height:58.57%;overflow:hidden;background:var(--n)}
 .mon .scr img{width:100%;height:100%;object-fit:cover;object-position:top}
 .mon .frm{position:absolute;inset:0;width:100%;height:100%}
-.pnl .phn{left:170px;top:176px;width:244px;height:516px;border-radius:40px;background:#070B2A;padding:10px;box-shadow:0 30px 50px -20px rgba(15,30,110,.55)}
-.phn div{width:100%;height:100%;border-radius:31px;overflow:hidden;background:#EEE7DB}
+.pnl .phn{left:calc(170*var(--px));top:calc(176*var(--px));width:calc(244*var(--px));height:calc(516*var(--px));border-radius:calc(40*var(--px));background:#070B2A;padding:calc(10*var(--px));box-shadow:0 calc(30*var(--px)) calc(50*var(--px)) calc(-20*var(--px)) rgba(15,30,110,.55)}
+.phn div{width:100%;height:100%;border-radius:calc(31*var(--px));overflow:hidden;background:#EEE7DB}
 /* המכשירים נשארים במקום, והעבודות נגללות בתוכם אחת אחרי השנייה */
 .phn .pstrip{height:auto;border-radius:0;overflow:visible;background:none;will-change:transform}
 .phn .ps{height:auto;border-radius:0;background:none}
 .mstrip{height:100%;will-change:transform}.ms{height:100%;overflow:hidden}.ms img{will-change:transform}
 .pnl+.pnl .mon,.pnl+.pnl .phn,.pnl+.pnl .lb{display:none}
 .phn img{width:100%;height:auto;will-change:transform}
-.lb{top:704px;background:var(--n);color:var(--c);box-shadow:0 10px 22px -10px rgba(15,30,110,.6);z-index:3}
-.ptx{left:470px;top:236px;width:300px;z-index:4}
-.ptx .num{font-size:96px;line-height:1;font-weight:700;overflow:hidden}
+.lb{top:calc(704*var(--px));background:var(--n);color:var(--c);box-shadow:0 calc(10*var(--px)) calc(22*var(--px)) calc(-10*var(--px)) rgba(15,30,110,.6);z-index:3}
+.ptx{left:calc(470*var(--px));top:calc(236*var(--px));width:calc(300*var(--px));z-index:4}
+.ptx .num{font-size:var(--s1);line-height:1;font-weight:700;overflow:hidden}
 .ptx .num i{display:inline-block;font-style:normal}
-.ptx .num{visibility:hidden}
-.pjnum{z-index:5;left:470px;top:236px;width:300px;height:1.04em;overflow:hidden;font-size:96px;line-height:1;font-weight:700;text-align:right;pointer-events:none}
+.pjnum{display:none}
+.pjnum{z-index:5;left:calc(470*var(--px));top:calc(236*var(--px));width:calc(300*var(--px));height:1.04em;overflow:hidden;font-size:var(--s1);line-height:1;font-weight:700;text-align:right;pointer-events:none}
 .pjnum i{display:block;font-style:normal;will-change:transform}
 .pjnum span{display:block;height:1.04em}
-.ptx h3{font-size:48px;line-height:1.15;margin-top:6px;overflow:hidden;padding-bottom:.1em}
+.ptx h3{font-size:var(--s2);line-height:1.15;margin-top:calc(8*var(--px));overflow:hidden;padding-bottom:.1em}
 .ptx h3 span{display:inline-block}
-.ptx .sb{font-size:24px;font-weight:700;line-height:1.3;margin-top:2px;color:#0B7A5E}
-.ptx p{margin-top:14px;opacity:.85}
-.ptx .btn-n{margin-top:22px}
+.ptx .sb{font-size:var(--s3);font-weight:700;line-height:1.3;margin-top:calc(8*var(--px));color:#0B7A5E}
+.ptx p{margin-top:calc(24*var(--px));opacity:.85}
+.ptx .btn-n{margin-top:calc(24*var(--px))}
 
 /* ===== צור קשר ===== */
 /* 6 · איך זה עובד: אחרי העבודות. קו באותו עובי, שנמשך כשמגיעים אליו, ושלוש נקודות שנדלקות */
-.hw{padding:var(--sp4) 0 330px;color:var(--n);background:var(--cbg)}
-.hwl{font-size:24px;font-weight:700;margin:0}
+.hw{position:relative;height:calc(100vh + calc(1300*var(--px)));color:var(--n)}
+/* המסך נעול עד שכל שלושת השלבים נכנסו */
+.hwp{position:sticky;top:0;height:100vh;display:flex;align-items:flex-start;padding-top:min(calc(180*var(--px)),17vh)}
+.hwp>.wrap{position:relative}
+.hwt{position:relative;z-index:3;width:max-content;margin:0 auto;padding:calc(8*var(--px)) calc(34*var(--px)) calc(14*var(--px));background:var(--c) var(--cbg) fixed}
+.hsv{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.hsv .hp{fill:none;stroke:var(--m);stroke-width:var(--lw,17.39)}
+.hbr{fill:none;stroke:var(--m);stroke-width:var(--lw,17.39);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .55s cubic-bezier(.5,0,.2,1) .05s}.hbr.on{stroke-dashoffset:0}
+.hnd{fill:var(--n);transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}.hnd.on{transform:scale(1)}
+.hwl{font-size:var(--s3);font-weight:700;margin:0}
 .hw .hwl,.hw h2{text-align:center}
-.hw h2{font-size:64px;line-height:1.05;font-weight:700;margin:6px 0 0}
-.hw h2 .mk{--mkw:0%;transition:--mkw .7s .3s}.hw.in h2 .mk{--mkw:100%}
-.hws{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:64px 0 0;padding:0;list-style:none}
-.hws li{position:relative;text-align:center}
-.hws b{display:block;font-size:48px;line-height:1;font-weight:700;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.hws i{display:block;width:34px;height:34px;margin:18px auto 0;visibility:hidden}
-.hws p{max-width:260px;margin:24px auto 0;font-size:18px;line-height:1.45;color:rgba(15,30,110,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
-.hws strong{display:block;font-size:24px;color:var(--n);margin-bottom:6px}
-.hws li.on b,.hws li.on p{opacity:1;transform:none}.hws li.on p{transition-delay:.15s}
+.hw h2{font-size:var(--s1);line-height:1.05;font-weight:700;margin:calc(8*var(--px)) 0 0}
+.hw h2 .mk{background:none;padding:0;font-size:1.12em;color:var(--m)}
+.hws{position:relative;display:block;margin:calc(40*var(--px)) 0 0;padding:0;list-style:none}
+.hws li{position:relative;height:calc(144*var(--px));display:flex;align-items:center;justify-content:center;text-align:center}
+.hws b{position:absolute;z-index:3;top:50%;left:50%;width:calc(120*var(--px));margin:calc(-20*var(--px)) 0 0 calc(var(--D,calc(340*var(--px))) - calc(60*var(--px)));display:block;font-size:var(--s2);line-height:calc(40*var(--px));font-weight:700;color:var(--c);opacity:0;transform:translateY(calc(-34*var(--px))) scale(.5);transition:opacity .3s .2s,transform .7s cubic-bezier(.34,1.56,.64,1) .2s}
+.hws li:nth-child(even) b{margin-left:calc(-1*var(--D,calc(340*var(--px))) - calc(60*var(--px)))}
+.hws i{display:none}
+.hws p{max-width:calc(380*var(--px));margin:0;font-size:var(--s3);line-height:1.45;color:rgba(15,30,110,.8);opacity:0;transform:translateY(calc(14*var(--px)));transition:opacity .6s,transform .6s}
+.hws strong{display:block;font-size:var(--s3);color:var(--n);margin-bottom:calc(8*var(--px))}
+.hws li.on b,.hws li.on p{opacity:1;transform:none}.hws li.on p{transition-delay:.3s}
 
 /* 7 · סיפורי הצלחה: כל סיפור נדלק כשהקו מגיע לנקודה שלו. "לפני" מקבל פס, ו"היום" עולה */
-.st{padding:24px 0 calc(var(--sp4) + 40px);color:var(--n);background:var(--cbg)}
-.st h2{font-size:64px;line-height:1.05;font-weight:700;margin:6px 0 0}
+.st{position:relative;height:calc(100vh + calc(250*var(--px)));color:var(--n)}
+/* המסך נעול עד שכל הסיפורים נכנסו */
+.stp{position:sticky;top:0;height:100vh;padding-top:min(calc(180*var(--px)),17vh)}
+.stp>.wrap{position:relative;z-index:2}
+.ssv{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1}
+.ssv .hp{fill:none;stroke:var(--m);stroke-width:var(--lw,17.39)}
+.st h2{font-size:var(--s1);line-height:1.05;font-weight:700;margin:calc(8*var(--px)) 0 0}
+.st .hwl,.st h2{text-align:center}
+.stt{position:relative;z-index:4;width:max-content;max-width:100%;margin:0 auto;padding:calc(8*var(--px)) calc(34*var(--px)) calc(14*var(--px));background:var(--c) var(--cbg) fixed}
 .st h2 .mk{--mkw:0%;transition:--mkw .7s .3s}.st.in h2 .mk{--mkw:100%}
-.sts{list-style:none;margin:56px 0 0;padding:0;display:grid;gap:34px}
-.sts li{width:calc(50% - 64px);display:grid;grid-template-columns:1fr 140px;gap:24px;align-items:center;background:#FFFDF8;border-radius:28px;padding:26px 28px;box-shadow:0 24px 50px -26px rgba(15,30,110,.4);opacity:0;transform:translateX(40px);transition:opacity .6s,transform .8s cubic-bezier(.2,.8,.2,1)}
-.sts li:nth-child(even){margin-right:auto;transform:translateX(-40px)}
-.sts li:nth-child(n+2){margin-top:-60px}
+.sts{list-style:none;margin:calc(40*var(--px)) 0 0;padding:0;display:grid;gap:calc(34*var(--px))}
+.sts li{width:calc(50% - calc(64*var(--px)));display:grid;grid-template-columns:1fr calc(112*var(--px));gap:calc(20*var(--px));align-items:center;background:#FFFDF8;border-radius:calc(28*var(--px));padding:calc(16*var(--px)) calc(22*var(--px));box-shadow:0 calc(24*var(--px)) calc(50*var(--px)) calc(-26*var(--px)) rgba(15,30,110,.4);opacity:0;transform:translateX(calc(40*var(--px)));transition:opacity .6s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.sts li:nth-child(even){margin-right:auto;transform:translateX(calc(-40*var(--px)))}
+.sts li:nth-child(n+2){margin-top:calc(-140*var(--px))}
 .sts li.on{opacity:1;transform:none}
-.sn b{display:block;font-size:48px;line-height:1.1;font-weight:700}.sn span{display:block;color:#0B7A5E;font-weight:700;font-size:20px;margin-top:2px}
-.sbf,.saf{display:flex;gap:12px;align-items:baseline;margin:14px 0 0;font-size:18px;line-height:1.45}
-.tg{flex:none;font-size:16px;font-weight:700;padding:2px 14px;border-radius:999px;background:rgba(15,30,110,.08)}
+.sn b{display:block;font-size:var(--s2);line-height:1.1;font-weight:700}.sn span{display:block;color:#0B7A5E;font-weight:700;font-size:var(--s3);margin-top:calc(8*var(--px))}
+.sbf,.saf{display:flex;gap:calc(12*var(--px));align-items:baseline;margin:calc(8*var(--px)) 0 0;font-size:var(--s3);line-height:1.4}
+.tg{flex:none;font-size:var(--s3);font-weight:700;padding:calc(2*var(--px)) calc(14*var(--px));border-radius:calc(999*var(--px));background:rgba(15,30,110,.08)}
 .saf .tg{background:var(--m)}
-.bt2{color:rgba(15,30,110,.8);background:linear-gradient(var(--m),var(--m)) no-repeat right 62%/0% 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .6s cubic-bezier(.6,0,.2,1) .55s,color .4s 1s}
+.bt2{color:rgba(15,30,110,.8);background:linear-gradient(var(--m),var(--m)) no-repeat right 62%/0% calc(3*var(--px));-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .6s cubic-bezier(.6,0,.2,1) .55s,color .4s 1s}
 .bt2 i{display:none}
-.sts li.on .bt2{background-size:100% 3px;color:rgba(15,30,110,.45)}
-.saf{opacity:0;transform:translateY(12px);transition:opacity .5s 1.15s,transform .5s 1.15s}.sts li.on .saf{opacity:1;transform:none}
+.sts li.on .bt2{background-size:100% calc(3*var(--px));color:rgba(15,30,110,.45)}
+.saf{opacity:0;transform:translateY(calc(12*var(--px)));transition:opacity .5s 1.15s,transform .5s 1.15s}.sts li.on .saf{opacity:1;transform:none}
 .saf>span:last-child{font-weight:700}
-.sim{height:170px;border-radius:22px;overflow:hidden;background:#EEE7DB;box-shadow:0 14px 30px -16px rgba(15,30,110,.45)}
+.sim{height:calc(130*var(--px));border-radius:calc(22*var(--px));overflow:hidden;background:#EEE7DB;box-shadow:0 calc(14*var(--px)) calc(30*var(--px)) calc(-16*var(--px)) rgba(15,30,110,.45)}
 .sim img{width:100%;height:100%;object-fit:cover;object-position:top}
 
 /* הקו הרציף מהפס של העבודות ועד הפוטר: באותו עובי, ונקודות שקופצות כשהוא מגיע */
 .flow{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:3}
-.flow .fp{fill:none;stroke:var(--m);stroke-width:17.39}
-.fd{fill:var(--n);stroke:var(--c);stroke-width:6;transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.2,1.6,.4,1)}.fd.on{transform:none}
-.ft{position:relative;overflow:hidden;background:radial-gradient(1200px 820px at 16% 100%,#1A31A0 0%,var(--n) 58%,#0C1960 100%);color:var(--c);padding:var(--sp4) 0 40px}
+.flow .fp{fill:none;stroke:var(--m);stroke-width:var(--lw,17.39)}
+.fd{fill:var(--n);stroke:var(--c);stroke-width:var(--dw,5);transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.2,1.6,.4,1)}.fd.on{transform:none}
+.ft{position:relative;overflow:clip;min-height:calc(100vh + calc(300*var(--px)));background:radial-gradient(calc(1200*var(--px)) calc(820*var(--px)) at 16% 100%,#1A31A0 0%,var(--n) 58%,#0C1960 100%);color:var(--c)}
+.ftp{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--sp4) 0 calc(40*var(--px))}
 .ft>.wrap{position:relative;z-index:1}
 .ft-ln{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:0}
-#ftlp{fill:none;stroke:var(--m);stroke-width:17.39}
+#ftlp{fill:none;stroke:var(--m);stroke-width:var(--lw,17.39)}
 /* הכוכב בפוטר: הקו מגיע לקרן השמאלית, והכוכב מתפוצץ בטורקיז אמיתי */
-.ft-star{position:absolute;left:0;top:0;width:500px;height:500px;pointer-events:none;overflow:visible;z-index:0}
-.ft-star line{stroke:var(--m);stroke-width:11.13;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s cubic-bezier(.2,.9,.25,1) var(--d)}
-.ft-star #fst circle{fill:var(--m);transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.2,1.6,.4,1) calc(var(--d) + .4s)}
-.ft-star .frg{fill:none;stroke:var(--c);stroke-width:11.8;transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.2,1.6,.4,1)}
-.ft-star .fwv{fill:none;stroke:var(--m);stroke-width:4;opacity:0;transform-box:fill-box;transform-origin:center}
+.ft-star{position:absolute;left:0;top:0;width:calc(800*var(--px));height:calc(800*var(--px));pointer-events:none;overflow:visible;z-index:0}
+.ft-star line{stroke:var(--m);stroke-width:45;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.ft-star #fst circle{fill:var(--m);transform:scale(0);transform-box:fill-box;transform-origin:center}
+.ft-star .frg{fill:none;stroke:var(--c);stroke-width:45;transform:scale(0);transform-box:fill-box;transform-origin:center}
+.ft-star .fwv{fill:none;stroke:var(--m);stroke-width:16;opacity:0;transform-box:fill-box;transform-origin:center}
 .ft.boom .ft-star line{stroke-dashoffset:0}.ft.boom .ft-star #fst circle,.ft.boom .ft-star .frg{transform:none}
 .ft.boom .ft-star .fwv{animation:wave 1.2s cubic-bezier(.2,.8,.3,1) .05s}
 @keyframes wave{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(4.5)}}
-.ft .in{position:relative;display:grid;grid-template-columns:1fr 520px;gap:80px;align-items:center}
+.ft .in{position:relative;display:grid;grid-template-columns:1fr calc(520*var(--px));gap:calc(80*var(--px));align-items:start}
+.ft .in>div{margin-top:calc(8.46vh - calc(37.5*var(--px)))}
 .ft .lbl{font-weight:700;color:var(--m)}
 .blf{position:relative;margin-bottom:var(--sp4);padding-bottom:var(--sp4)}
-.blf h2{margin-bottom:14px;max-width:820px}.blf p{font-size:24px;line-height:1.4;color:var(--soft);max-width:820px}
-.ft h2{font-size:var(--fs-a);line-height:1.12;margin:12px 0 32px}
-.ft .nt{margin-top:12px;color:var(--soft)}
-.ft-c{margin-top:32px;display:grid;gap:12px}
-.ft-c li{display:flex;gap:14px;align-items:baseline}
-.ft-c span{min-width:62px;color:var(--soft)}
+.blf h2{margin-bottom:calc(14*var(--px));max-width:calc(820*var(--px))}.blf p{font-size:var(--s3);line-height:1.4;color:var(--soft);max-width:calc(820*var(--px))}
+.ft h2{font-size:var(--fs-a);line-height:1.05;margin:calc(8*var(--px)) 0 calc(24*var(--px))}
+.ft h2 .tq{white-space:nowrap}
+.ft .nt{margin-top:calc(12*var(--px));color:var(--soft)}
+.ft-c{margin-top:calc(32*var(--px));display:grid;gap:calc(12*var(--px))}
+.ft-c li{display:flex;gap:calc(14*var(--px));align-items:baseline}
+.ft-c span{min-width:calc(62*var(--px));color:var(--soft)}
 .ft-c a{text-decoration:none;font-weight:500}
-.form{background:linear-gradient(160deg,#FCF9F2 0%,var(--c) 55%,#F0EADC 100%);color:var(--n);border-radius:30px;padding:38px 38px 30px;box-shadow:0 40px 80px -30px rgba(0,0,0,.55)}
-.form .f{margin-bottom:20px}
-.form label{display:block;font-weight:700;margin-bottom:8px}
-.form input,.form textarea{width:100%;font:inherit;padding:13px 18px;border-radius:16px;border:1.5px solid rgba(15,30,110,.2);background:rgba(255,255,255,.65);color:var(--n);resize:vertical}
-.form input:focus,.form textarea:focus{outline:3px solid var(--m);outline-offset:0;border-color:var(--n)}
-.form .btn-n{width:100%;justify-content:center;margin-top:4px}
-.form .nt{text-align:center;color:rgba(15,30,110,.75)}
+.form{background:linear-gradient(160deg,#FCF9F2 0%,var(--c) 55%,#F0EADC 100%);color:var(--n);border-radius:calc(30*var(--px));padding:clamp(calc(20*var(--px)),3vh,calc(32*var(--px))) calc(34*var(--px)) clamp(calc(18*var(--px)),2.6vh,calc(26*var(--px)));box-shadow:0 calc(40*var(--px)) calc(80*var(--px)) calc(-30*var(--px)) rgba(0,0,0,.55)}
+.form .f{margin-bottom:clamp(calc(10*var(--px)),1.6vh,calc(16*var(--px)))}
+.form label{display:block;font-weight:700;margin-bottom:calc(6*var(--px))}
+.form input,.form textarea{width:100%;font:inherit;padding:clamp(calc(8*var(--px)),1.1vh,calc(12*var(--px))) calc(18*var(--px));border-radius:calc(16*var(--px));border:calc(1.5*var(--px)) solid rgba(15,30,110,.2);background:rgba(255,255,255,.65);color:var(--n);resize:vertical}
+.form input:focus,.form textarea:focus{outline:calc(3*var(--px)) solid var(--m);outline-offset:0;border-color:var(--n)}
+.form .btn-n{width:100%;justify-content:center;margin-top:calc(4*var(--px))}
+.form .nt{text-align:center;color:rgba(15,30,110,.75);font-size:var(--s3);margin-top:calc(10*var(--px))}
 .form .err{color:#B3261E;font-weight:700;text-align:center}
-.bar{position:relative;margin-top:var(--sp4);padding-top:28px;border-top:1px solid rgba(246,241,231,.16);display:flex;justify-content:space-between;align-items:center;gap:20px;color:rgba(246,241,231,.72)}
-.bar img{height:44px;width:auto}
+.bar{position:relative;margin-top:max(calc(24*var(--px)),calc(25vh - calc(208*var(--px))));padding-top:calc(28*var(--px));border-top:calc(1*var(--px)) solid rgba(246,241,231,.16);display:flex;justify-content:space-between;align-items:center;gap:calc(20*var(--px));color:rgba(246,241,231,.72)}
+.bar img{height:calc(44*var(--px));width:auto}
 
-.wa-float{position:fixed;z-index:70;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;background:var(--m);color:var(--n);display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(15,30,110,.55),0 0 0 4px rgba(255,255,255,.85)}
-.wa-float svg{width:32px;height:32px}
-.a11y{position:fixed;z-index:70;left:20px;bottom:20px;width:52px;height:52px;border-radius:50%;border:3px solid var(--c);background:var(--n);color:var(--c);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(15,30,110,.6)}
-.a11y svg{width:28px;height:28px}
+.wa-float{position:fixed;z-index:70;right:calc(20*var(--px));bottom:calc(20*var(--px));width:calc(62*var(--px));height:calc(62*var(--px));border-radius:50%;background:var(--m);color:var(--n);display:grid;place-items:center;box-shadow:0 calc(14*var(--px)) calc(30*var(--px)) calc(-8*var(--px)) rgba(15,30,110,.55),0 0 0 calc(4*var(--px)) rgba(255,255,255,.85)}
+.wa-float svg{width:calc(32*var(--px));height:calc(32*var(--px))}
+.a11y{position:fixed;z-index:70;left:calc(20*var(--px));bottom:calc(20*var(--px));width:calc(52*var(--px));height:calc(52*var(--px));border-radius:50%;border:calc(3*var(--px)) solid var(--c);background:var(--n);color:var(--c);display:grid;place-items:center;cursor:pointer;box-shadow:0 calc(10*var(--px)) calc(24*var(--px)) calc(-8*var(--px)) rgba(15,30,110,.6)}
+.a11y svg{width:calc(28*var(--px));height:calc(28*var(--px))}
 .a11y[aria-pressed="true"]{background:var(--m);color:var(--n)}
 .still *{animation:none!important;transition:none!important}
 
 @media(max-width:899px){
- :root{--fs-a:32px;--fs-c:16px;--sp4:72px}
- .wrap{padding:0 20px}
- .hd{height:58px;padding:0 16px 0 6px}.hd-nav{display:none}.hd-logo img{height:34px}.hd-btn{margin-inline-start:auto;padding:9px 16px}
- .ft .in{grid-template-columns:1fr;gap:32px}.form{padding:26px 20px 22px}
+ :root{--px:1px;--fs-a:calc(40*var(--px));--fs-c:calc(18*var(--px));--sp4:calc(72*var(--px))}
+ .wrap{padding:0 calc(20*var(--px))}
+ .hd{height:calc(58*var(--px));padding:0 calc(16*var(--px)) 0 calc(6*var(--px))}.hd-nav{display:none}.hd-logo img{height:calc(34*var(--px))}.hd-btn{margin-inline-start:auto;padding:calc(9*var(--px)) calc(16*var(--px))}
+ .ft .in{grid-template-columns:1fr;gap:calc(32*var(--px))}.form{padding:calc(26*var(--px)) calc(20*var(--px)) calc(22*var(--px))}
  .bar{flex-direction:column;text-align:center}
- .ft{padding-bottom:110px}
+ .ft{min-height:0}.ftp{position:relative;padding-bottom:calc(110*var(--px))}
 }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol></defs></svg>
-
 <header class="hd" id="hd">
  <a class="hd-logo" href="#top" data-go="top"><img src="assets/img/logo-navy.svg" alt="אפרים קוסטנטינר" width="141" height="40"></a>
  <nav class="hd-nav" aria-label="ניווט ראשי">
@@ -277,6 +293,8 @@ img{display:block}
  <a class="hd-btn" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>דברו איתי בוואטסאפ</a>
 </header>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol></defs></svg>
+
 <main id="top">
 <section class="sc" id="scene" aria-label="אני בונה לך עסק שעובד בשבילך">
  <div class="pin">
@@ -288,23 +306,21 @@ img{display:block}
     </div>
 
     <div class="htx" id="htx">
-     <p class="nm">אפרים קוסטנטינר</p>
-     <h1 aria-label="אני בונה לך עסק שעובד בשבילך."><span class="l"><span class="w">אני</span> <span class="w">בונה</span> <span class="w">לך</span></span><span class="l"><span class="w">עסק</span> <span class="w">שעובד</span></span><span class="l"><span class="w mk">בשבילך</span><span class="w">.</span></span></h1>
-     <p class="lead">מהראש, מהאקסל ומהמחברת, לעסק שעובד חכם מבפנים ונראה מדהים מבחוץ: אתר ומערכת AI כגוף אחד. בניתי את זה קודם לעצמנו, כשפתחנו בר קינוחים וההזמנות התחילו להתבלבל.</p>
-     <a class="btn-n" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>בואו נדבר על העסק שלך</a>
-     <p class="note">נפתח צ'אט בוואטסאפ, ואחזור אליך עוד היום</p>
+     <h1 aria-label="עסק שעובד חכם מבפנים ומבחוץ."><span class="l"><span class="w">עסק</span> <span class="w">שעובד</span></span><span class="l"><span class="w">חכם</span> <span class="w mk">מבפנים</span> <span class="w">ו</span><span class="w mk">מבחוץ</span><span class="w">.</span></span></h1>
+     <p class="lead">הזמנות, תזכורות, מקדמות ושאלות שחוזרות על עצמן עוברות למערכת אחת שמחוברת לאתר שלך. אתה חוזר לעשות את מה שרק אתה יודע, והערב חוזר אליך.</p>
+     <a class="btn-n" href="https://wa.me/972534191131" data-wa><svg aria-hidden="true"><use href="#wa"/></svg>דברו איתי בוואטסאפ</a>
     </div>
 
     <div class="sp" id="sp">
      <p class="sl">הסיפור שלי</p>
      <h2 class="sh">גם אצלנו ההזמנות <span class="tq">התבלבלו</span>.</h2>
-     <p class="stx" id="stx">הרבה בעלי עסקים מנהלים הזמנות מהראש, מהאקסל ומהמחברת, וזה מחזיק עד שמגיע עומס. אני מכיר את זה מהבית: אשתי פתחה בר קינוחים, הזמנות קפצו מיום ליום, ולא ידענו כמה אנחנו מכניסים באמת. אז בניתי <b>אתר ומערכת כגוף אחד</b>: הזמנה מהאתר נוחתת ישר במערכת, וה-AI מאשר ומזכיר בוואטסאפ. היום פטיסייר וקריספרי רצים על זה, ומי שבונה אצלי רואה כל הזמנה במקום אחד, יודע כמה הוא מרוויח, <b>והערב חוזר אליו</b>.</p>
+     <p class="stx" id="stx">אשתי פתחה בר קינוחים, הזמנות קפצו מיום ליום, ולא ידענו כמה אנחנו מכניסים באמת. אז בניתי <b>אתר ומערכת כגוף אחד</b>: הזמנה מהאתר נוחתת ישר במערכת, וה-AI מאשר ומזכיר בוואטסאפ. היום פטיסייר רץ על זה, ומי שבונה אצלי רואה כל הזמנה במקום אחד, יודע כמה הוא מרוויח, <b>והערב חוזר אליו</b>.</p>
      <a class="btn-m" href="https://wa.me/972534191131" data-wa="היי אפרים, קראתי באתר את הסיפור שלך. גם אצלי ההזמנות מתבלבלות, אשמח לדבר על העסק שלי"><svg aria-hidden="true"><use href="#wa"/></svg>זה אני, בוא נדבר</a>
     </div>
 
     <div class="hx" id="hx"><p>למה לעבוד איתי</p><h2 aria-label="מה תקבל רק אצלי."><span class="l"><span class="w">מה</span> <span class="w">תקבל</span></span><span class="l"><span class="w mk" id="hmk">רק אצלי</span><span class="w">.</span></span></h2></div>
     <svg class="lnv" viewBox="0 0 1440 810" aria-hidden="true">
-     <path id="ln" d="M960 340H90C60 340 40 360 40 390V700" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
+     <path id="ln" d="M923 340H158.7C128.7 340 108.7 360 108.7 390V650" fill="none" stroke="#3DDBB0" stroke-width="17.39" stroke-linecap="round" opacity="0"/>
      <g fill="#0F1E6E" stroke="#F6F1E7" stroke-width="5"><circle class="dot" cx="830" cy="340" r="15"/><circle class="dot" cx="560" cy="340" r="15"/><circle class="dot" cx="290" cy="340" r="15"/></g>
      <circle id="run" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" opacity="0"/>
     </svg>
@@ -312,7 +328,7 @@ img{display:block}
     <div class="stn" style="left:435px"><b><i>02</i></b><span><strong>בעל עסק בעצמי</strong>בר הקינוחים שלנו רץ על המערכת כל יום. אני יודע מה כואב, כי אני חי את זה.</span></div>
     <div class="stn" style="left:165px"><b><i>03</i></b><span><strong>AI שעובד בשבילך</strong>אישורים, תזכורות ומקדמות יוצאים בוואטסאפ לבד. הערב שלך נשאר שלך.</span></div>
 
-    <svg class="band" id="band" viewBox="-6400 600 6448.7 500" width="6448.7" height="500" aria-hidden="true"><path d="M-6400 1100V680H-8.7C13.4 680 31.3 662.1 31.3 640H48.7V1100Z" fill="#3DDBB0"/></svg>
+    <svg class="band" id="band" viewBox="-6400 600 6448.7 900" width="6448.7" height="900" aria-hidden="true"><path d="M108.7 640V648.7Q108.7 688.7 68.7 688.7H-1291.3Q-1331.3 688.7 -1331.3 728.7V1500" fill="none" stroke="#3DDBB0" stroke-width="17.39"/></svg>
     <div class="fr" id="fr"><b id="fq">בוא תראה איך זה עובד</b><span class="fa" id="fb" aria-hidden="true"><svg viewBox="0 0 56 28"><path d="M53 14H4M15 3L4 14l11 11"/></svg></span></div>
     <div id="pnls"></div>
 
@@ -322,7 +338,6 @@ img{display:block}
      <svg class="rays" id="rays" viewBox="-500 -500 1000 1000"></svg>
      <svg class="rg" viewBox="-230 -230 460 460"><circle class="rt" id="rt" r="218"/><circle class="rn" id="rn" r="237" pathLength="100"/></svg>
     </div>
-    <div class="say" id="say" aria-hidden="true"><span>נעים מאוד!</span></div>
    </div>
 
    <div class="pjnum" aria-hidden="true"><i id="pjnI"><span>01</span><span>02</span><span>03</span></i></div>
@@ -333,30 +348,33 @@ img{display:block}
 </section>
 
 <section class="hw" id="how" aria-label="ככה זה עובד">
+ <div class="hwp" id="hwp">
+ <svg class="hsv" id="hsv" aria-hidden="true"><path id="hlp" class="hp"/><g id="hdots"></g><circle id="hrun" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" style="opacity:0"/></svg>
  <div class="wrap">
-  <p class="hwl">ככה זה עובד</p>
-  <h2>קו ישר מבלאגן <span class="mk">לשקט</span>.</h2>
+  <div class="hwt"><p class="hwl">ככה זה עובד</p><h2>קו ישר מבלאגן <span class="mk">לשקט</span>.</h2></div>
   <ol class="hws">
    <li><b>01</b><i aria-hidden="true"></i><p><strong>אפיון</strong>אני לומד איך העסק שלך עובד, ומוצא איפה אפשר לקצר.</p></li>
    <li><b>02</b><i aria-hidden="true"></i><p><strong>בנייה</strong>אתר ומערכת AI כגוף אחד, תפורים בדיוק לעסק שלך.</p></li>
    <li><b>03</b><i aria-hidden="true"></i><p><strong>שקט</strong>המערכת מנהלת את הלו"ז, ואתה עובד בראש שקט.</p></li>
   </ol>
  </div>
+ </div>
 </section>
 
 <section class="st" id="stories" aria-label="סיפורי הצלחה">
+ <div class="stp" id="stp"><svg class="ssv" id="ssv" aria-hidden="true"><path id="slp" class="hp"/><g id="sdots"></g><circle id="srun" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" style="opacity:0"/></svg>
  <div class="wrap">
-  <p class="hwl">סיפורי הצלחה</p>
-  <h2>מה השתנה <span class="mk">אצלם</span>.</h2>
+  <div class="stt"><p class="hwl">סיפורי הצלחה</p>
+  <h2>מה השתנה <span class="mk">אצלם</span>.</h2></div>
   <ol class="sts" id="sts"></ol>
- </div>
+ </div></div>
 </section>
 </main>
 
 <footer class="ft" id="contact">
+ <div class="ftp" id="ftp">
  <svg class="ft-ln" id="ftln" aria-hidden="true"><path id="ftlp"/></svg>
- <svg class="ft-star" viewBox="-160 -160 320 320" aria-hidden="true"><circle class="fwv" r="40"/><g id="fst"></g><circle class="frg" r="40"/></svg>
- <div class="wrap"><div class="blf"><div class="lbl">אני מאמין</div><h2>עסק שעובד <em class="tq">חכם מבפנים</em> ונראה <em class="tq">מדהים מבחוץ</em>.</h2><p>בעידן ה-AI אסור לבזבז שעות על מה שמערכת AI יכולה לעשות לבד. ככה חוזרים לעשות את מה שרק אתה יודע.</p></div></div>
+ <svg class="ft-star" viewBox="0 0 1000 1000" aria-hidden="true"><circle class="fwv" cx="500" cy="500" r="115"/><g id="fst"></g><circle class="frg" cx="500" cy="500" r="115"/></svg>
  <div class="wrap in">
   <div>
    <div class="lbl">צור קשר</div>
@@ -369,15 +387,16 @@ img{display:block}
    <div class="f"><label for="f-name">שם</label><input id="f-name" name="name" autocomplete="name" required></div>
    <div class="f"><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required style="text-align:right"></div>
    <div class="f"><label for="f-biz">סוג העסק</label><input id="f-biz" name="biz" placeholder="למשל: קינוחים לאירועים"></div>
-   <div class="f"><label for="f-pain">מה הכי מעיק לך היום?</label><textarea id="f-pain" name="pain" rows="3"></textarea></div>
+   <div class="f"><label for="f-pain">מה הכי מעיק לך היום?</label><textarea id="f-pain" name="pain" rows="2"></textarea></div>
    <button type="submit" class="btn-n">שליחה בוואטסאפ ←</button>
-   <p class="nt">נפתח צ'אט בוואטסאפ עם הפרטים, ואחזור אליכם עוד היום</p>
+   <p class="nt">נפתח צ'אט בוואטסאפ, ואחזור אליכם עוד היום</p>
    <p class="err" id="ferr" role="alert"></p>
   </form>
  </div>
  <div class="wrap"><div class="bar"><img src="assets/img/logo-cream.svg" alt="אפרים קוסטנטינר" width="156" height="44"><span>© <span id="yr">2026</span> אפרים קוסטנטינר · אתרים ומערכות AI לעסקים</span></div></div>
+ </div>
 </footer>
-<svg class="flow" id="flow" aria-hidden="true"><path id="fwL" class="fp"/><path id="fwR" class="fp"/><path id="fcb" class="fp"/><path id="fl" class="fp"/><g id="fdots"></g></svg>
+<svg class="flow" id="flow" aria-hidden="true"><path id="fwL" class="fp"/><path id="fwR" class="fp"/><path id="fcb" class="fp"/><path id="fl" class="fp"/><g id="fdots"></g><defs><clipPath id="frcT"><rect id="frcTr" x="-50000" y="-100000" width="100000" height="100000"/></clipPath><clipPath id="frcB"><rect id="frcBr" x="-50000" y="0" width="100000" height="100000"/></clipPath></defs><circle id="frun" r="14" fill="#F6F1E7" stroke="#0F1E6E" stroke-width="7" clip-path="url(#frcT)" style="opacity:0"/><circle id="frun2" r="14" fill="#0F1E6E" stroke="#F6F1E7" stroke-width="7" clip-path="url(#frcB)" style="opacity:0"/></svg>
 
 <a class="wa-float" href="https://wa.me/972534191131" data-wa aria-label="שיחה בוואטסאפ"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 <button class="a11y" id="a11y" type="button" aria-pressed="false" aria-label="עצירת אנימציות"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.9" fill="currentColor" stroke="none"/><path d="M4.5 8.6 12 10l7.5-1.4M12 10v5.2m0 0-3.6 6.2M12 15.2l3.6 6.2"/></svg></button>
@@ -399,7 +418,7 @@ const PJ=[
  {name:'מנטורי',sub:'הסוכן הדיגיטלי של הבית',p:'אתר שמסביר ומצרף משפחות, ומערכת שמראה לכל משפחה, כל חודש, כמה נשאר לה ומה הצעד הבא.',
   ph:'img/mentori-m-long.webp',use:1400,phL:'מבחוץ · האתר',mon:'assets/img/projects/mentori-in.webp',monL:'מבפנים · המערכת'},
  {name:'קריספרי',sub:'עיצובי פירות ובר פירות',p:'אתר שמציג את העיצובים ומקבל הזמנות, ומערכת שמסדרת כל יום את המשלוחים, המלאי והקניות בשוק.',
-  ph:'img/crispery-m.webp',use:0,phL:'בטלפון · המערכת',mon:'assets/img/projects/crispery.webp',monL:'מבחוץ · האתר'}
+  ph:'img/krispri-m-long.webp',use:5000,phL:'מבחוץ · האתר',mon:'assets/img/projects/crispery-in.webp',monL:'מבפנים · המערכת'}
 ];
 const NP=PJ.length;
 $('#pnls').outerHTML=PJ.map((j,k)=>`<div class="pnl" style="left:${-1440*(k+1)}px" aria-label="${j.name}">
@@ -460,7 +479,7 @@ const rays=$$('#rays g').map(g=>({l:g.querySelector('line'),c:g.querySelector('c
 const RO=[5,4,3,2,1,0,11,10,6,7,8,9];rays[9].c.style.display='none';
 
 /* ===== הסיפור שלי: פסקה אחת שנדלקת מילה אחרי מילה, והמשפטים החשובים מקבלים פס ===== */
-const stx=$('#stx'),say=$('#say'),sayT=$('#say span');
+const stx=$('#stx');
 (function wrap(el){[...el.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(s=>{if(!s)return;if(/^\s+$/.test(s)){f.appendChild(document.createTextNode(s));return;}const w=document.createElement('span');w.className='sw';w.textContent=s;f.appendChild(w);});n.replaceWith(f);}else if(n.nodeType===1)wrap(n);});})(stx);
 const sws=$$('#stx .sw'),NW=sws.length,sbs=$$('#stx b').map(b=>{const ws=b.querySelectorAll('.sw');return{b,i:sws.indexOf(ws[ws.length-1])};});
 function renderStop(y){
@@ -471,13 +490,20 @@ function renderStop(y){
 
 /* ===== האלמנטים ===== */
 const pjnI=$('#pjnI'),sc=$('#scene'),ft=$('#contact'),nv=$('#nv'),nvw=$('#nvw'),trk=$('#trk'),htx=$('#htx'),deco=$('#deco'),me=$('#me'),fig=$('#fig'),rn=$('#rn'),rt=$('#rt'),sp=$('#sp'),hx=$('#hx'),hw=$$('#hx .w'),hmk=$('#hmk');
+$$('.stn span').forEach(sp=>{const st=sp.querySelector('strong');const rest=[...sp.childNodes].filter(n=>n!==st);const em=document.createElement('em');em.className='stb';rest.forEach(n=>em.appendChild(n));sp.appendChild(em);});
 const ln=$('#ln'),run=$('#run'),dots=$$('.lnv .dot'),stns=$$('.stn'),band=$('#band'),fr=$('#fr'),fb=$('#fb'),fq=$('#fq'),pjh=$('#pjh'),pjc=$('#pjc'),pjn=$('#pjn');
 let t0=0;const intro=()=>t0?cl((performance.now()-t0)/900):0;
 const L=ln.getTotalLength();ln.style.strokeDasharray=L;
+/* הקו הדק שמתחת לעבודות: נמשך רק כשהקו מהכוכב מגיע אליו */
+const bandP=$('#band path'),BL=bandP.getTotalLength();bandP.style.strokeDasharray=BL;
+/* הפינה שבה העיגול מחכה, והנקודה שבה הקו יוצא מתחתית המסך */
+const BC=(()=>{for(let l=0;l<BL;l+=2)if(bandP.getPointAtLength(l).x<=-1322.3)return l;return BL;})(),BE=(()=>{for(let l=BC;l<BL;l+=2)if(bandP.getPointAtLength(l).y>=740)return l;return BL;})();
 const DX=[830,560,290];
 const SF=DX.map(x=>{for(let d=0;d<=L;d+=2){const p=ln.getPointAtLength(d);if(Math.abs(p.y-340)<1.5&&p.x<=x)return d/L;}return 1;});
 /* לוח הזמנים של הגלילה (בפיקסלים) */
-const PS=3950,PS2=PS+300,MV=700,ST=1250,D=PS2+NP*ST+150;
+/* ההחלקה לעבודות מתחילה כשהקו מגיע לסוף הפינה ומתחיל לרדת, לא מחכה שיגיע עד הסוף */
+const LC0=(()=>{for(let l=0;l<L;l+=2)if(ln.getPointAtLength(l).y>=392)return l;return L;})();
+const PS=Math.round(2740+740*LC0/L),PS2=PS+300,MV=700,ST=1250,D=PS2+(NP-1)*ST+MV+460;
 
 function render(){
  const y=cl(scrollY-pageTop(sc),0,D);
@@ -494,7 +520,7 @@ function render(){
     אחרי לפני/אחרי העיגול נסגר סביבו, הרקע חוזר לבהיר, והוא זז ימינה ונהיה מרכז הכוכב */
  const bgd=document.getElementById('bgd'),bgc=document.getElementById('bgc'),k=intro(),R0=230*lr(.8,1,k<=0?0:backOut(k));
  const g=eo(seg(y,40,620)),c2=ss(seg(y,1960,2300)),a2=ss(seg(y,2140,2540));
- const px=lr(380,1160,a2),py=lr(430,340,a2),s=lr(1,100/230,a2);
+ const px=lr(344,1123,a2),py=lr(430,340,a2),s=lr(1,100/230,a2);
  const x0=-ox/u,y0=-oy/u,x1=(W-ox)/u,y1=(H-oy)/u,far=Math.hypot(Math.max(px-x0,x1-px),Math.max(py-y0,y1-py))+30;
  const rC=lr(lr(R0,far,g),230*s,c2),rl=rC/s;
  me.style.transform=`translate(${(px-230*s).toFixed(1)}px,${(py-230*s).toFixed(1)}px) scale(${s.toFixed(4)})`;
@@ -509,9 +535,6 @@ function render(){
  if(so>0)renderStop(y);
  /* נעים מאוד: הבועה קופצת כשהעיגול נפתח, המילים נכתבות, ונעלמת יחד עם הסיפור */
  const sa=seg(y,260,420),sw=seg(y,330,560),sx=seg(y,1880,2020);
- say.style.visibility=sa<=0||sx>=1?'hidden':'visible';say.style.opacity=(1-sx).toFixed(3);
- say.style.transform='translateY('+(-sx*30).toFixed(1)+'px) rotate(-4deg) scale('+(sa<=0?0:backOut(sa)).toFixed(3)+')';
- sayT.style.clipPath='inset(-20% 0 -20% '+((1-eo(sw))*100).toFixed(1)+'%)';
 
  /* 3 · למה לעבוד איתי: הקרניים גדלות מהטבעת, והכותרת עולה */
  rays.forEach((r,i)=>{const k=RO.indexOf(i)*14,v=seg(y,2420+k,2590+k);r.l.style.strokeDashoffset=(1-eo(v)).toFixed(3);r.l.style.opacity=v>0?1:0;const d=seg(y,2550+k,2660+k);r.c.style.transform=`scale(${d<=0?0:backOut(d).toFixed(3)})`;});
@@ -521,13 +544,20 @@ function render(){
 
  /* הקו נמשך מהקרן השמאלית, וכל כרטיסייה נתלית כשהוא מגיע לנקודה שלה */
  const lp=seg(y,2740,3480);ln.style.strokeDashoffset=(L*(1-lp)).toFixed(1);ln.style.opacity=lp>0?1:0;
- const pt=ln.getPointAtLength(L*lp);run.setAttribute('cx',pt.x.toFixed(1));run.setAttribute('cy',pt.y.toFixed(1));run.setAttribute('opacity',lp>0&&lp<1?1:0);
+ /* העיגול שבראש הקו ממשיך לרוץ גם אחרי הסוף: דרך הפינה ושמאלה על הקו הדק, ונעלם בהדרגה כשהוא יוצא מהמסך */
+ const bl=y<PS+MV?BC*seg(y,3480,PS+MV):BC+(BE-BC)*seg(y,D-300,D),pt=lp<1?ln.getPointAtLength(L*lp):bandP.getPointAtLength(Math.min(bl,BL));run.setAttribute('cx',pt.x.toFixed(1));run.setAttribute('cy',pt.y.toFixed(1));run.setAttribute('opacity',lp<=0?0:1);
  stns.forEach((st,i)=>{const t=seg(lp,SF[i]-.015,SF[i]+.09),b=st.querySelector('i'),sp2=st.querySelector('span');
   dots[i].style.transformOrigin=`${DX[i]}px 340px`;dots[i].style.transform=`scale(${(t<=0?0:backOut(t)).toFixed(3)})`;
   b.style.transform=t<1?`translateY(${((1-eo(t))*110).toFixed(1)}%)`:'';
-  const l=seg(lp,SF[i]+.03,SF[i]+.13);sp2.style.opacity=l.toFixed(3);sp2.style.transform=l<1?`translateY(${((1-eo(l))*14).toFixed(1)}px)`:'';});
+  const l=seg(lp,SF[i]+.03,SF[i]+.13);sp2.style.opacity=l.toFixed(3);sp2.style.transform=l<1?`translateY(${((1-eo(l))*14).toFixed(1)}px)`:'';
+  /* בתוך הכרטיס: המסגרת נסגרת פנימה, הכותרת עולה, ואחריה המלל */
+  const m=seg(lp,SF[i]+.07,SF[i]+.2),mf=eo(m),m1=eo(seg(m,0,.55)),m2=eo(seg(m,.35,1)),stg=sp2.querySelector('strong'),stb=sp2.querySelector('.stb');
+  sp2.style.outlineOffset=(-11-(1-mf)*34).toFixed(1)+'px';sp2.style.outlineColor='rgba(61,219,176,'+mf.toFixed(3)+')';
+  stg.style.opacity=m1.toFixed(3);stg.style.transform=m1<1?'translateY('+((1-m1)*18).toFixed(1)+'px)':'';
+  stb.style.opacity=m2.toFixed(3);stb.style.transform=m2<1?'translateY('+((1-m2)*18).toFixed(1)+'px)':'';});
 
  /* 4 · "בוא תראה איך זה עובד" נכתב על הפס במסך של העבודות, ונעלם כשהטלפון והמחשב מגיעים */
+ bandP.style.strokeDashoffset=(BL-Math.min(BL,bl)).toFixed(1);
  const fw=seg(y,PS+60,PS+360),fo=eo(seg(y,PS+580,PS+700));op(fr,fw>0?1-fo:0);
  fq.style.clipPath=fw<1?'inset(-20% 0 -20% '+((1-eo(fw))*100).toFixed(1)+'%)':'';fq.style.transform=fo>0?'translateY('+(-fo*20).toFixed(1)+'px)':'';
  const b2=seg(y,PS+300,PS+460);fb.style.opacity=Math.min(1,b2*2).toFixed(3);fb.style.transform='scale('+(b2<=0?.7:.7+.3*backOut(b2)).toFixed(3)+')';
@@ -537,16 +567,15 @@ function render(){
  pjc.style.opacity=(ph*.75).toFixed(3);
  pnls.forEach((o,k)=>{
   const a=seg(y,PS+120,PS+MV+40);
-  o.phn.style.transform=`translateY(${((1-eo(seg(a,0,.7)))*110).toFixed(1)}px)`;
-  o.mon.style.transform=`translateY(${((1-eo(seg(a,.12,.82)))*110).toFixed(1)}px)`;
+  o.phn.style.transform='';
+  o.mon.style.transform='';
   o.lb.forEach((l,i)=>{const t=seg(y,PS+700+i*50,PS+860+i*50);l.style.opacity=Math.min(1,t*2).toFixed(3);l.style.transform=`scale(${t<=0?0:backOut(t).toFixed(3)})`;});
   /* המלל נשאר באמצע (המסילה זזה והוא לא): יוצא למעלה כשהעבודה הבאה מגיעה, ונכנס מלמטה כמו מסך חדש */
-  o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px)';
-  const b0=PS2+k*ST,ti=seg(y,b0+(k?560:650),b0+(k?900:980)),to=k<NP-1?seg(y,PS2+(k+1)*ST,PS2+(k+1)*ST+190):0;
-  const n=o.lt.length;o.lt.forEach((c,j)=>{const v=eo(seg(ti,j/n*.3,.4+j/n*.3)),x=eo(seg(to,j/n*.25,.55+j/n*.25));c.style.transform=(v<1||x>0)?'translateY('+(((1-v)-x)*120).toFixed(1)+'%)':'';});
-  /* תת-הכותרת, הפסקה והכפתור עולים מתוך חריץ, ויוצאים למעלה באותה דרך */
-  [[o.sb,.28],[o.p,.4],[o.bt,.55]].forEach(([el,b],i)=>{const v=eo(seg(ti,b,b+.35)),x=eo(seg(to,.1+i*.12,.6+i*.12)),P=((1-v)*100).toFixed(1),Q=(x*100).toFixed(1);
-   el.style.opacity=v<=0||x>=1?0:1;el.style.transform=v<1?'translateY('+P+'%)':x>0?'translateY(-'+Q+'%)':'';el.style.clipPath=v<1?'inset(0 0 '+P+'% 0)':x>0?'inset('+Q+'% 0 0 0)':'';});
+  const b0=PS2+k*ST,ti=k?seg(y,b0+280,b0+480):seg(y,b0+650,b0+980),to=k<NP-1?seg(y,PS2+(k+1)*ST+170,PS2+(k+1)*ST+330):0;
+  /* הכותרת, המלל והכפתור נכנסים מלמטה ויוצאים למעלה ביחד, כמו גוש אחד שנגלל */
+  const v=eo(seg(ti,0,.7)),x=eo(seg(to,0,.75));
+  o.tx.style.transform='translateX('+(1440*(k+1)-PX).toFixed(1)+'px) translateY('+((1-v)*160-x*160).toFixed(1)+'px)';
+  o.tx.style.opacity=Math.min(v,1-x).toFixed(3);
   o.bt.style.setProperty('--sh',(-60+190*seg(ti,.9,1)).toFixed(0)+'%');
   o.tx.style.pointerEvents=ti>.8&&to<.2?'':'none';
   /* האתר בתוך הטלפון נגלל בזמן שהעבודה עומדת */
@@ -569,50 +598,81 @@ $('#sts').innerHTML=PJ.map((j,k)=>'<li><div class="sx2"><div class="sn"><b>'+j.n
 
 /* ===== הקו ממשיך מהפס של העבודות: יורד, עובר בשלושת השלבים, בסיפורי ההצלחה, ונוחת בפוטר בכוכב שמתפוצץ ===== */
 const flow=$('#flow'),fl=$('#fl'),fdots=$('#fdots'),stl=$('#sts'),ftLn=$('#ftln'),ftLp=$('#ftlp'),ftStar=$('.ft-star');
-$('#fst').innerHTML=Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2-Math.PI/2,c=Math.cos(a),s=Math.sin(a),q=n=>n.toFixed(1);return '<g style="--d:'+(i*.035).toFixed(3)+'s"><line x1="'+q(c*46)+'" y1="'+q(s*46)+'" x2="'+q(c*132)+'" y2="'+q(s*132)+'" pathLength="1"/><circle cx="'+q(c*132)+'" cy="'+q(s*132)+'" r="9.5"/></g>';}).join('');
+$('#fst').innerHTML=Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2-Math.PI/2,c=Math.cos(a),s=Math.sin(a),q=n=>(500+n).toFixed(1);return '<g style="--d:'+(i*.035).toFixed(3)+'s"><line x1="'+q(c*136.5)+'" y1="'+q(s*136.5)+'" x2="'+q(c*400)+'" y2="'+q(s*400)+'" pathLength="1"/><circle cx="'+q(c*400)+'" cy="'+q(s*400)+'" r="38.6"/></g>';}).join('');
 let FL=null;
 const ctr=el=>{const r=el.getBoundingClientRect();return{x:r.left+r.width/2+scrollX,y:r.top+r.height/2+scrollY};};
 const fwL=$('#fwL'),fwR=$('#fwR'),fcb=$('#fcb');
+const LK=1.5; /* כמה פיקסלים של קו לכל פיקסל של גלילה */
 function buildFlow(){
- const de=document.documentElement,Wd=de.clientWidth,cx=Wd/2,wr=hws.querySelector('.wrap').getBoundingClientRect(),cl0=wr.left+32,e=8.7;
- const sd=$$('.hws i').map(ctr),y0=sd[0].y,top0=pageTop(hws),ftTop=pageTop(ft),fh=(y0-top0)/.45,yb=top0+fh;
- const cards=$$('#sts li').map(li=>({li,y:ctr(li).y}));
+ const U=u;document.documentElement.style.setProperty('--u',U.toFixed(3));document.documentElement.style.setProperty('--lw',(17.39*U).toFixed(2));document.documentElement.style.setProperty('--dw',(5*U).toFixed(2));
+ ['#frun','#frun2','#hrun','#srun'].forEach(q=>{const c=$(q);c.setAttribute('r',(14*U).toFixed(2));c.setAttribute('stroke-width',(7*U).toFixed(2));});
+ const de=document.documentElement,Wd=de.clientWidth,H=innerHeight,cx=Wd/2,wr=hws.querySelector('.wrap').getBoundingClientRect(),cl0=wr.left+32,R=34*U;
+ const SD=pageTop(sc)+D,top0=SD+H/2+(740-405)*u,ftTop=pageTop(ft),xl=Wd/2+(108.7-720)*u;
+ const secTop=pageTop(hws),rel=secTop+hws.offsetHeight-H,secBot=secTop+hws.offsetHeight;
+ const stTop=pageTop(stS),stRel=stTop+stS.offsetHeight-H,stBot=stTop+stS.offsetHeight,sbox=$('#stp').getBoundingClientRect();
+ const box=$('#hwp').getBoundingClientRect(),hb=hws.querySelector('.hwt').getBoundingClientRect(),ty=hb.bottom-box.top+40*U;
+ const rr=50*U,DX=Math.min(340*U,Wd/2-rr-16);de.style.setProperty('--D',DX.toFixed(1)+'px');
+ const steps=$$('.hws li').map(li=>{const r=li.getBoundingClientRect(),b=li.querySelector('b');return{li,y:r.top-box.top+r.height/2,nx:r.left+b.offsetLeft+b.offsetWidth/2,sh:r.height};});
+ /* קו עם פינות עגולות דרך רשימת נקודות, ואורך הדרך עד כל נקודה */
+ const rnd=(P,R)=>{const q=n=>n.toFixed(1),acc=[];let d='M'+q(P[0][0])+' '+q(P[0][1]),L=0;
+  for(let k=0;k<P.length-1;k++){const a=P[k],b=P[k+1],len=Math.hypot(b[0]-a[0],b[1]-a[1]),ux=(b[0]-a[0])/len,uy=(b[1]-a[1])/len,cs=k>0?R:0,ce=k<P.length-2?R:0;
+   acc[k]={L0:L-cs,a};L+=len-cs-ce;d+='L'+q(b[0]-ux*ce)+' '+q(b[1]-uy*ce);
+   if(ce){const c=P[k+2],l2=Math.hypot(c[0]-b[0],c[1]-b[1]),vx=(c[0]-b[0])/l2,vy=(c[1]-b[1])/l2;d+='A'+R+' '+R+' 0 0 '+((ux*vy-uy*vx)>0?1:0)+' '+q(b[0]+vx*R)+' '+q(b[1]+vy*R);L+=Math.PI*R/2;}}
+  return{d,L,at:(k,x,y)=>acc[k].L0+Math.hypot(x-acc[k].a[0],y-acc[k].a[1])};};
+ const cards=$$('#sts li').map(li=>{const r=li.getBoundingClientRect();return{li,y:r.top-sbox.top+r.height/2};});
  flow.setAttribute('width',Wd);flow.setAttribute('height',de.scrollHeight);
- /* שני קירות המשפך: יורדים מהקצוות של הפס ומתכנסים לאמצע */
- const wall=x0=>'M'+x0+' '+top0+'C'+x0+' '+(top0+fh)+' '+cx+' '+(yb-.2*fh)+' '+cx+' '+yb;
- fwL.setAttribute('d',wall(e));fwR.setAttribute('d',wall(Wd-e));
- const LW=fwL.getTotalLength(),ws=[];for(let l=0;l<=LW;l+=3)ws.push([l,fwL.getPointAtLength(l)]);
- const xAt=yy=>{let b=ws[0][1];for(const s of ws){if(s[1].y<=yy)b=s[1];else break;}return b.x;};
- const xL=xAt(y0),xR=Wd-xL;
- /* פס השלבים: חוצה את המשפך מימין לשמאל דרך שלוש הנקודות */
- fcb.setAttribute('d','M'+xR+' '+y0+'H'+xL);
- /* מהקצה של המשפך הקו ממשיך באמצע, לאורך סיפורי ההצלחה, עד הפוטר */
- fl.setAttribute('d','M'+cx+' '+(yb-1)+'V'+(ftTop+2));
- const LC=fcb.getTotalLength(),LT=fl.getTotalLength();
- [[fwL,LW],[fwR,LW],[fcb,LC],[fl,LT]].forEach(([p,l])=>p.style.strokeDasharray=l);
- const pts=[...sd.map(p=>[p.x,y0]),...cards.map(c=>[cx,c.y])];
- fdots.innerHTML=pts.map(([x,y])=>'<circle class="fd" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="13"/>').join('');
- const fds=$$('#fdots .fd'),lis=$$('.hws li');
- const marks=[...sd.map((p,i)=>({cb:1,len:xR-p.x,dot:fds[i],el:lis[i]})),...cards.map((c,i)=>({cb:0,len:c.y-yb,dot:fds[3+i],el:c.li}))];
+ [fwR,fcb].forEach(p=>p.setAttribute('d',''));
+ /* א: מסוף העבודות עד תחילת "ככה זה עובד" */
+ fwL.setAttribute('d','M'+xl+' '+top0+'V'+secTop);
+ /* ב: בתוך המסך הנעול — יורד, עובר מתחת לכותרת עד האמצע, ויורד דרך שלושת השלבים */
+ const hlp=$('#hlp');$('#hsv').setAttribute('viewBox','0 0 '+Wd+' '+H);
+ /* נחש: מתחת לכותרת ימינה אל 01, שמאלה אל 02, ימינה אל 03, ואז שמאלה עד הצד ויורד */
+ const sh=steps[0].sh,PB=[[xl,0],[xl,ty]];steps.forEach(s=>{PB.push([s.nx,PB[PB.length-1][1]]);PB.push([s.nx,s.y+sh/2]);});PB.push([cx,PB[PB.length-1][1]]);PB.push([cx,H]);
+ const pb=rnd(PB,R);hlp.setAttribute('d',pb.d);
+ /* ג: מסוף "ככה זה עובד" באמצע, לאורך הסיפורים, עד הפוטר */
+ const slp=$('#slp');$('#ssv').setAttribute('viewBox','0 0 '+Wd+' '+H);slp.setAttribute('d','M'+cx+' 0V'+H);slp.style.strokeDasharray=H;
+ const pc=rnd([[cx,stBot],[cx,Math.max(ftTop,stBot)+2]],R);fl.setAttribute('d',pc.d);const KN=[[0,0],[2,pc.L]];
+ const LA=fwL.getTotalLength(),LB=hlp.getTotalLength(),LC=fl.getTotalLength();
+ /* התהליך ארוך בדיוק כמה שהקו צריך, כדי שהקו ירוץ באותה מהירות כמו בפוטר */
+ {const want=Math.round(Math.max(H+600,LB/LK+.3*H));if(Math.abs(hws.offsetHeight-want)>2){hws.style.height=want+'px';return buildFlow();}}
+ [[fwL,LA],[hlp,LB],[fl,LC]].forEach(([p,l])=>p.style.strokeDasharray=l);
+ const q=n=>n.toFixed(1),EX=v=>{for(let i=1;i<KN.length;i++)if(v<=KN[i][0]){const a=KN[i-1],b=KN[i];return a[1]+(b[1]-a[1])*(v-a[0])/(b[0]-a[0]);}return KN[KN.length-1][1];};
+ $('#hdots').innerHTML=steps.map(s=>'<circle class="hnd" cx="'+q(s.nx)+'" cy="'+q(s.y)+'" r="'+q(rr)+'"/>').join('');
+ fdots.innerHTML='';$('#sdots').innerHTML=cards.map(c=>'<circle class="fd" cx="'+cx.toFixed(1)+'" cy="'+c.y.toFixed(1)+'" r="'+(15*U).toFixed(2)+'"/>').join('');
+ const hns=$$('#hdots .hnd'),fds=$$('#sdots .fd');
+ const marksB=steps.map((s,i)=>({len:pb.at(2+2*i,s.nx,s.y)-rr,el:s.li,nd:hns[i]})),marksC=cards.map((c,i)=>({len:c.y,dot:fds[i],el:c.li}));
+ const c0=top0-SD,hdA=s=>s<SD?-1e9:s+c0+(H*.7-c0)*seg(s,SD,SD+400);
+ let sB0=SD;while(sB0<secTop&&hdA(sB0)<secTop)sB0+=2;
  /* בפוטר: הקו יורד מהאמצע, פונה שמאלה ונכנס לקרן העליונה של הכוכב */
- const fH=ft.offsetHeight,bl=ft.querySelector('.blf').getBoundingClientRect(),cy=Math.max(320,bl.top+bl.height/2+scrollY-ftTop),xs=cl0+200;
+ const ftp=$('#ftp'),fH=ftp.offsetHeight,fpT=ftp.getBoundingClientRect().top,fm=$('#form').getBoundingClientRect(),nf=$('#f-name').closest('.f'),cy=fm.top-fpT+(fm.height-nf.offsetHeight-parseFloat(getComputedStyle(nf).marginBottom))*.96,xs=Math.max(100*U,fm.left+scrollX-150*U);
  ftLn.setAttribute('width',Wd);ftLn.setAttribute('height',fH);
- ftLp.setAttribute('d','M'+cx+' 0V30Q'+cx+' 60 '+(cx-30)+' 60H'+(xs+30)+'Q'+xs+' 60 '+xs+' 90V'+(cy-200));
+ const xs2=Math.abs(xs-cx)<70?cx:xs;ftLp.setAttribute('d',rnd(xs2===cx?[[cx,0],[cx,cy-80.5*U]]:[[cx,0],[cx,60],[xs2,60],[xs2,cy-80.5*U]],30).d);
  const FLen=ftLp.getTotalLength();ftLp.style.strokeDasharray=FLen;
- ftStar.style.left=(xs-250)+'px';ftStar.style.top=(cy-250)+'px';
- FL={ws,LW,LC,LT,y0,yb,marks,FLen,ftTop};drawFlow();
+ ftStar.style.width=ftStar.style.height=(700*U)+'px';ftStar.style.left=(xs2-350*U)+'px';ftStar.style.top=(cy-350*U)+'px';
+ FL={H,SD,c0,top0,secTop,rel,secBot,sB0,LA,LB,LC,EX,hlp,stRel,slp,pin:ft.offsetHeight-fH,marksB,marksC,FLen,ftTop,...(()=>{const fA=stRel,sE=de.scrollHeight-H-2,fB=Math.min(fA+FLen/LK,sE-250);return{fA,fB,sS:fB,sE};})(),rays:$$('#fst g').map(g=>({l:g.querySelector('line'),c:g.querySelector('circle')})),frg:$('.ft-star .frg')};drawFlow();
 }
 function drawFlow(){
  if(!FL)return;
- const hd=scrollY+innerHeight*.7,{ws,LW,LC,LT,y0,yb}=FL;
- let wl=0;for(const s of ws){if(s[1].y<=hd)wl=s[0];else break;}if(hd>=yb)wl=LW;
- fwL.style.strokeDashoffset=fwR.style.strokeDashoffset=(LW-wl).toFixed(1);
- const cb=LC*ss(seg(hd,y0,y0+240));fcb.style.strokeDashoffset=(LC-cb).toFixed(1);
- const tl=cl(hd-yb,0,LT);fl.style.strokeDashoffset=(LT-tl).toFixed(1);
- FL.marks.forEach(m=>{const on=(m.cb?cb:tl)>=m.len-2;m.dot.classList.toggle('on',on);m.el.classList.toggle('on',on);});
- const f2=tl<LT-1?0:cl((hd-FL.ftTop)*1.6,0,FL.FLen);
+ const s=scrollY,{H,SD,c0,top0,rel,secBot,sB0,LA,LB,LC,EX,hlp,stRel,slp}=FL;
+ /* א: הקו ממשיך מתחתית העבודות */
+ const hdA=s<SD?-1e9:s+c0+(H*.7-c0)*seg(s,SD,SD+400),la=cl(hdA-top0,0,LA);fwL.style.strokeDashoffset=(LA-la).toFixed(1);
+ /* ב: בזמן שהמסך נעול */
+ const lb=LB*seg(s,sB0,rel);hlp.style.strokeDashoffset=(LB-lb).toFixed(1);
+ /* ג: אחרי שהמסך משתחרר */
+ const ls=s<rel?0:H*seg(s,rel,stRel);slp.style.strokeDashoffset=(H-ls).toFixed(1);const lc=s<stRel?0:LC;fl.style.strokeDashoffset=(LC-lc).toFixed(1);
+ FL.marksB.forEach(m=>{const on=lb>=m.len;m.el.classList.toggle('on',on);m.nd.classList.toggle('on',on);});
+ FL.marksC.forEach(m=>{const on=ls>=m.len-2;m.dot.classList.toggle('on',on);m.el.classList.toggle('on',on);});
+ const f2=lc<LC-1?0:FL.FLen*seg(s,FL.fA,FL.fB);
  ftLp.style.strokeDashoffset=(FL.FLen-f2).toFixed(1);
- if(f2>=FL.FLen-1)ft.classList.add('boom');else if(f2<FL.FLen*.4)ft.classList.remove('boom');
+ /* הכוכב נבנה לפי הגלילה: קודם הטבעת, ואז הקרניים אחת אחרי השנייה, ובחזרה הוא נעלם באותה דרך */
+ const sp=lc<LC-1?0:seg(s,FL.sS,FL.sE);FL.frg.style.transform='scale('+eo(seg(sp,0,.2)).toFixed(3)+')';
+ FL.rays.forEach((r,i)=>{const a=.12+i*.04;r.l.style.strokeDashoffset=(1-eo(seg(sp,a,a+.3))).toFixed(3);const t=seg(sp,a+.22,a+.38);r.c.style.transform='scale('+(t<=0?0:backOut(t)).toFixed(3)+')';});
+ /* העיגול שבראש הקו */
+ let rp=null;if(s>=SD&&s<sB0)rp=fwL.getPointAtLength(la);else if(s>=stRel&&lc<LC)rp=fl.getPointAtLength(lc);else if(lc>=LC&&(f2<FL.FLen-1||sp<.12)){const q=ftLp.getPointAtLength(f2);rp={x:q.x,y:Math.min(Math.max(s,FL.ftTop),FL.ftTop+FL.pin)+q.y};}
+ const fr=$('#frun'),fr2=$('#frun2');$('#frcTr').setAttribute('y',(FL.ftTop-100000).toFixed(1));$('#frcBr').setAttribute('y',FL.ftTop.toFixed(1));if(rp){for(const c of [fr,fr2]){c.setAttribute('cx',rp.x.toFixed(1));c.setAttribute('cy',rp.y.toFixed(1));c.style.opacity=1;}}else{fr.style.opacity=0;fr2.style.opacity=0;}
+ const hr=$('#hrun');if(s>=sB0&&s<rel){const q=hlp.getPointAtLength(lb);hr.setAttribute('cx',q.x.toFixed(1));hr.setAttribute('cy',q.y.toFixed(1));hr.style.opacity=1;}else hr.style.opacity=0;
+ const sr=$('#srun');if(s>=rel&&s<stRel){const q=slp.getPointAtLength(ls);sr.setAttribute('cx',q.x.toFixed(1));sr.setAttribute('cy',q.y.toFixed(1));sr.style.opacity=1;}else sr.style.opacity=0;
+ run.style.visibility=s>=SD?'hidden':'';
 }
 addEventListener('scroll',()=>requestAnimationFrame(drawFlow),{passive:true});
 let fT;addEventListener('resize',()=>{clearTimeout(fT);fT=setTimeout(buildFlow,200);});
